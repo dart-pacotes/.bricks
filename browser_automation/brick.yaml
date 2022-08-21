@@ -1,5 +1,6 @@
 name: browser_automation
 description: Template to build CLI applications that perform browser automation using puppeteer
+repository: https://github.com/dart-pacotes/.bricks
 
 version: 0.1.0+1
 
