@@ -1,0 +1,8 @@
+# ignore everything exception .gitignore, mason-lock.json, mason.yaml and README.md
+
+*
+
+!.gitignore
+!mason-lock.json
+!mason.yaml
+!README.md
