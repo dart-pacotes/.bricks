@@ -196,4 +196,4 @@ $RECYCLE.BIN/
 
 # Mason
 
-bricks.json
+*.mason/
