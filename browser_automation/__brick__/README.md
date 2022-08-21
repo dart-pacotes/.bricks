@@ -12,6 +12,8 @@ Running is as simple as:
 > dart run
 
 Welcome to {{name.lowerCase().paramCase()}}! Below are the mandatory arguments you need to specify.
+-m, --mode                  Specifies the output mode (todo, add, possible, output, modes).
+                            (defaults to "todo")
 -h, --[no-]headful          Specifies whether the automation should run in headful or headless mode. (defaults to headless)
 ```
 
