@@ -23,6 +23,13 @@ environment:
 vars:
   name:
     type: string
-    description: Your name
-    default: Dash
-    prompt: What is your name?
+    description: Name of the project
+    prompt: What is the name of the project?
+  description:
+    type: string
+    description: Description of the project
+    prompt: How would you describe the project?
+  author:
+    type: string
+    description: Author of the project
+    prompt: Who is creating this project?
