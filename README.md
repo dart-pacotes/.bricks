@@ -11,3 +11,7 @@ Most of these bricks were created for my personal use, but certainly they can su
 |browser_automation|Template to build CLI applications that perform browser automation using [puppeteer](https://github.com/xvrh/puppeteer-dart)|[randomize-photo-mosh](https://github.com/cobrinhas/randomize-photo-mosh)|
 
 They are also published in [brickhub.dev](https://brickhub.dev/).
+
+## Playground
+
+If you clone this repository, you can play with the bricks right away. Navigate to `playground` directory and run `mason make <brick>`.
