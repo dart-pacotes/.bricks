@@ -1,13 +1,8 @@
 name: browser_automation
 description: Template to build CLI applications that perform browser automation using puppeteer
 
-# The following defines the version and build number for your brick.
-# A version number is three numbers separated by dots, like 1.2.34
-# followed by an optional build number (separated by a +).
 version: 0.1.0+1
 
-# The following defines the environment for the current brick.
-# It includes the version of mason that the brick requires.
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
 
@@ -33,3 +28,7 @@ vars:
     type: string
     description: Author of the project
     prompt: Who is creating this project?
+  includeOutputMode:
+    type: boolean
+    description: Whether or not to include the output mode argument
+    prompt: Include output mode?

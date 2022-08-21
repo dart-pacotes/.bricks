@@ -1,10 +1,12 @@
 import 'package:args/args.dart';
 import 'package:{{name.lowerCase().snakeCase()}}/{{name.lowerCase().snakeCase()}}.dart';
 
+{{#includeOutputMode}}
 const _kOutputModeArgumentName = 'mode';
 const _kOutputModeArgumentAbbreviation = 'm';
 const _kOutputModeArgumentHelp =
     'Specifies the output mode (todo, add, possible, output, modes).';
+{{/includeOutputMode}}
 
 const _kHeadfulArgumentName = 'headful';
 const _kHeadfulArgumentAbbreviation = 'h';
@@ -14,6 +16,7 @@ const _kHeadfulArgumentNameHelp =
 ArgParser programArgParser() {
   final parser = ArgParser();
 
+  {{#includeOutputMode}}
   parser.addOption(
     _kOutputModeArgumentName,
     abbr: _kOutputModeArgumentAbbreviation,
@@ -21,6 +24,7 @@ ArgParser programArgParser() {
     defaultsTo: OutputMode.todo.name,
     mandatory: false,
   );
+  {{/includeOutputMode}}
 
   parser.addFlag(
     _kHeadfulArgumentName,
@@ -33,8 +37,11 @@ ArgParser programArgParser() {
 }
 
 extension ArgResultsExtension on ArgResults {
+
+  {{#includeOutputMode}}
   OutputMode? get outputMode =>
       OutputMode.fromArgument(this[_kOutputModeArgumentName]);
+  {{/includeOutputMode}}
 
   bool get headless => !this[_kHeadfulArgumentName];
 }
