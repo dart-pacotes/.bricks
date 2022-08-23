@@ -1,3 +1,5 @@
 bricks:
   browser_automation:
     path: ../browser_automation
+  cloud_run:
+    path: ../cloud_run
