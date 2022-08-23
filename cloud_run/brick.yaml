@@ -1,0 +1,36 @@
+name: cloud_run
+description: Template to build ready-for-deploy applications in GCP Cloud Run
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+# Variables specify dynamic values that your brick depends on.
+# Zero or more variables can be specified for a given brick.
+# Each variable has:
+#  * a type (string, number, boolean, enum, or array)
+#  * an optional short description
+#  * an optional default value
+#  * an optional list of default values (array only)
+#  * an optional prompt phrase used when asking for the variable
+#  * a list of values (enums only)
+vars:
+  name:
+    type: string
+    description: Name of the project
+    prompt: What is the name of the project?
+  description:
+    type: string
+    description: Description of the project
+    prompt: How would you describe the project?
+  author:
+    type: string
+    description: Author of the project
+    prompt: Who is creating this project?
+  environment:
+    type: enum
+    description: Platform environment used to develop the application
+    prompt: Which platform environment will the application be developed on?
+    values:
+      - node
