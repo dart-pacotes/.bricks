@@ -3,3 +3,5 @@ bricks:
     path: ../browser_automation
   cloud_run:
     path: ../cloud_run
+  tijolo:
+    path: ../tijolo
