@@ -1,5 +1,6 @@
 name: tijolo
 description: Template to generate bricks for dart-pacotes/.bricks
+repository: https://github.com/dart-pacotes/.bricks
 
 version: 0.1.0+1
 
@@ -38,3 +39,7 @@ vars:
       - MIT
       - GNUGPLV3
       - none
+  openSource:
+    type: boolean
+    description: Whether the brick is open-source or not
+    prompt: Is the brick open-source?

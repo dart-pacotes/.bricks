@@ -4,6 +4,21 @@ import 'package:mason/mason.dart';
 void run(HookContext context) {
   _setFileEntitiesPathBeforeGen(context);
   _setLicenseDetails(context);
+
+  final logger = context.logger;
+
+  final isOpenSource = context.vars['openSource'] == true;
+
+  var repositoryUrl = '';
+
+  if (isOpenSource) {
+    repositoryUrl = logger.prompt('${lightGreen.wrap('?')} Repository URL?');
+  }
+
+  context.vars = {
+    ...context.vars,
+    'repositoryUrl': repositoryUrl,
+  };
 }
 
 void _setFileEntitiesPathBeforeGen(HookContext context) {
