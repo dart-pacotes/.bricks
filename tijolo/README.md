@@ -7,5 +7,5 @@ Template to generate bricks for dart-pacotes/.bricks
 ## Usage
 
 ```
-mason make tijolo --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license>
+mason make tijolo --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license> --openSource <true|false>
 ```

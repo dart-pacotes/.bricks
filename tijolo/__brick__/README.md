@@ -7,5 +7,5 @@
 ## Usage
 
 ```
-mason make {{name.lowerCase().snakeCase()}} --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license>
+mason make {{name.lowerCase().snakeCase()}} --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license> --openSource <true|false>
 ```
