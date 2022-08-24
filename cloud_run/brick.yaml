@@ -34,3 +34,4 @@ vars:
     prompt: Which platform environment will the application be developed on?
     values:
       - node
+      - none
