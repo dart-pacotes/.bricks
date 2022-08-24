@@ -10,6 +10,7 @@ Most of these bricks were created for my personal use, but certainly they can su
 |----|-----------|-------|
 |browser_automation|Template to build CLI applications that perform browser automation using [puppeteer](https://github.com/xvrh/puppeteer-dart)|[randomize-photo-mosh](https://github.com/cobrinhas/randomize-photo-mosh)|
 |cloud_run|Template to build ready-for-deploy applications in GCP Cloud Run|[node-cloud-run](https://github.com/freitzzz/node-cloud-run)|
+|tijolo|Template to generate bricks for dart-pacotes/.bricks|[tijolo](https://github.com/dart-pacotes/.bricks/tree/master/tijolo)|
 
 They are also published in [brickhub.dev](https://brickhub.dev/).
 
