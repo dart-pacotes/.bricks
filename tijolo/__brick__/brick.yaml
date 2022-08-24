@@ -1,5 +1,6 @@
 name: {{name.lowerCase().snakeCase()}}
 description: {{description}}
+repository: {{repositoryUrl}}
 
 version: 0.1.0+1
 
@@ -39,3 +40,8 @@ vars:
       - MIT
       - GNUGPLV3
       - none
+  openSource:
+    type: boolean
+    description: Whether the brick is open-source or not
+    default: {{openSource}}
+    prompt: Is the brick open-source?

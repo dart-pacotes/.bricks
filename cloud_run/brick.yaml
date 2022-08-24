@@ -1,5 +1,6 @@
 name: cloud_run
 description: Template to build ready-for-deploy applications in GCP Cloud Run
+repository: https://github.com/dart-pacotes/.bricks
 
 version: 0.1.0+1
 
