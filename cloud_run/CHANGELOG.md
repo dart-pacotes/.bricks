@@ -1,3 +1,4 @@
 # 0.1.0+1
 
-- TODO: Describe initial release.
+- Node platform environment available
+- Release first version of cloud_run brick
