@@ -9,34 +9,48 @@ void run(HookContext context) {
 
 void _formatFiles(final HookContext context) {
   final logger = context.logger;
-  final directory = Directory('.');
+  final directory = Directory.current;
 
   final files = directory.listSync(recursive: true);
 
+  final progress = logger.progress('Formatting files');
+
+  final formattedFiles = <File>[];
+
   for (final file in files) {
-    file as File;
+    if (file is File) {
+      final fileName = file.path.split(Platform.pathSeparator).last;
 
-    final fileName = file.path.split(Platform.pathSeparator).last;
+      if (_kFileNamesPresentInBlackList.contains(fileName)) {
+        file.deleteSync();
+      } else {
+        final content = file.readAsStringSync();
 
-    if (_kFileNamesPresentInBlackList.contains(fileName)) {
-      file.deleteSync();
-    } else {
-      final lines = file.readAsLinesSync();
-      final formattedLines = <String>[];
+        final formattedContent = content.replaceAll(
+          RegExp('\n{3,}', multiLine: true),
+          '\n',
+        );
 
-      String previousLine = '';
+        if (content.length != formattedContent.length) {
+          file.writeAsStringSync(formattedContent);
 
-      for (final currentLine in lines) {
-        if (!(previousLine == '\n' && currentLine == previousLine)) {
-          formattedLines.add(currentLine);
+          formattedFiles.add(file);
         }
-
-        previousLine = currentLine;
-      }
-
-      if (lines.length != formattedLines.length) {
-        file.writeAsStringSync(formattedLines.join());
       }
     }
+  }
+
+  if (formattedFiles.isNotEmpty) {
+    progress.complete('Formatted ${formattedFiles.length} file(s):');
+
+    formattedFiles.forEach(
+      (file) {
+        logger.info(
+          '  ${darkGray.wrap(file.absolute.path)} ${lightGreen.wrap('(formatted)')}',
+        );
+      },
+    );
+  } else {
+    progress.complete('No files needed to format.');
   }
 }
