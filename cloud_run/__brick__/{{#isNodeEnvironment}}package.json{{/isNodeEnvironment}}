@@ -1,0 +1,22 @@
+{
+  "name": "{{name.lowerCase().snakeCase()}}",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "{{description}}",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "author": "{{author}}",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-winston": "^4.2.0",
+    {{#useFirebase}}
+    "firebase-admin": "^11.0.0",
+    {{/useFirebase}}
+    "winston": "^3.8.1"
+  }
+}
