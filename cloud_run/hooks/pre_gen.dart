@@ -1,4 +1,5 @@
 import 'package:mason/mason.dart';
+import 'dart:io';
 
 void run(HookContext context) {
   final isNodeEnvironment = context.vars['environment'] == 'node';
@@ -16,5 +17,12 @@ void run(HookContext context) {
     ...context.vars,
     'isNodeEnvironment': isNodeEnvironment,
     'useFirebase': useFirebase,
+    'fileEntitiesPathBeforeGen': [
+      ..._fileEntitiesPathBeforeGen(),
+    ],
   };
+}
+
+Iterable<String> _fileEntitiesPathBeforeGen() {
+  return Directory.current.listSync(recursive: true).map((e) => e.path);
 }
