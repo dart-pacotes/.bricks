@@ -7,5 +7,5 @@ Generates source-code for abstractions of the data layer
 ## Usage
 
 ```
-mason make repository --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license> --openSource <true|false>
+mason make repository
 ```
