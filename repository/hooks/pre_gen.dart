@@ -27,8 +27,8 @@ void _setFileEntitiesPathBeforeGen(HookContext context) {
 }
 
 void _askForImplementationIfNeccessary(HookContext context) {
-  var implementation = context.args['implementation'];
-  final template = context.args['template'];
+  var implementation = context.vars['implementation'];
+  final template = context.vars['template'];
   final implementationsForTemplate =
       _kTemplateImplementationsMap[template] ?? [];
 
@@ -49,7 +49,7 @@ void _askForImplementationIfNeccessary(HookContext context) {
 }
 
 void _askForCoreCodeGenerationIfNeccessary(HookContext context) {
-  final template = context.args['template'];
+  final template = context.vars['template'];
 
   var generateCoreCode = false;
 
@@ -69,9 +69,9 @@ void _askForCoreCodeGenerationIfNeccessary(HookContext context) {
 }
 
 void _injectCheckers(HookContext context) {
-  final implementation = context.args['implementation'];
-  final template = context.args['template'];
-  final language = context.args['language'];
+  final implementation = context.vars['implementation'];
+  final template = context.vars['template'];
+  final language = context.vars['language'];
 
   final withDartLanguage = language == 'dart';
 
