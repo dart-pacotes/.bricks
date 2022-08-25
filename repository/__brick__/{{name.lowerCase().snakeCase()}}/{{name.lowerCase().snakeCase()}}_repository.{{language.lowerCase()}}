@@ -1,0 +1,713 @@
+{{#withDartLanguage}}
+    {{#usingAuthenticationTemplate}}
+import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+        {{^generateCoreCode}}
+import 'package:{{projectId}}/core/core.dart';
+        {{/generateCoreCode}}
+import 'package:{{projectId}}/logging/logging.dart';
+        {{#usingFirebaseImplementation}}
+const _kTemporaryAuthenticationFirebaseAppName = 'temporary_authentication';
+        {{/usingFirebaseImplementation}}
+
+abstract class AuthenticationRepository {
+  Future<Either<AuthenticationError, void>> login({
+    required final Credentials credentials,
+  });
+
+  Future<Either<AuthenticationError, String>> signup({
+    required final Credentials credentials,
+    final bool preventAutomaticLogin = false,
+  });
+
+  Future<Either<AuthenticationError, void>> logout();
+
+  Future<Either<AuthenticationError, void>> requestPasswordReset({
+    required final String email,
+  });
+
+  Future<Either<AuthenticationError, void>> resetPassword({
+    required final String newPassword,
+    required final String confirmationCode,
+  });
+
+  Future<Either<AuthenticationError, bool>> authenticated();
+}
+
+class FakeAuthenticationRepository implements AuthenticationRepository {
+  @override
+  Future<Either<AuthenticationError, void>> login({
+    required final Credentials credentials,
+  }) {
+    return Future.value(
+      const Right(null),
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, String>> signup({
+    required Credentials credentials,
+    final bool preventAutomaticLogin = false,
+  }) {
+    return Future.value(
+      const Right('uid'),
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, void>> requestPasswordReset({
+    required final String email,
+  }) {
+    return Future.value(
+      const Right(null),
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, void>> resetPassword({
+    required String newPassword,
+    required String confirmationCode,
+  }) {
+    return Future.value(
+      const Right(null),
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, bool>> authenticated() {
+    return Future.value(
+      const Right(false),
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, void>> logout() {
+    return Future.value(
+      const Right(null),
+    );
+  }
+}
+
+        {{#usingFirebaseImplementation}}
+class FirebaseAuthenticationRepository implements AuthenticationRepository {
+  final FirebaseAuth firebaseAuth;
+
+  FirebaseAuthenticationRepository({
+    required this.firebaseAuth,
+  });
+
+  @override
+  Future<Either<AuthenticationError, void>> login({
+    required final Credentials credentials,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        try {
+          await firebaseAuth.signInWithEmailAndPassword(
+            email: credentials.username,
+            password: credentials.password,
+          );
+
+          return const Right(null);
+        } on FirebaseAuthException catch (error, stacktrace) {
+          logError(error, stacktrace: stacktrace);
+
+          return Left(error.toAuthenticationError);
+        }
+      },
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, String>> signup({
+    required Credentials credentials,
+    final bool preventAutomaticLogin = false,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        try {
+          var firebaseAuth = this.firebaseAuth;
+          FirebaseApp? firebaseApp;
+
+          if (preventAutomaticLogin) {
+            firebaseApp = await Firebase.initializeApp(
+              name: _kTemporaryAuthenticationFirebaseAppName,
+              options: firebaseAuth.app.options,
+            );
+
+            firebaseAuth = FirebaseAuth.instanceFor(
+              app: firebaseApp,
+            );
+          }
+
+          final userCredential =
+              await firebaseAuth.createUserWithEmailAndPassword(
+            email: credentials.username,
+            password: credentials.password,
+          );
+
+          firebaseApp?.delete();
+
+          return Right(userCredential.user!.uid);
+        } on FirebaseAuthException catch (error, stacktrace) {
+          logError(error, stacktrace: stacktrace);
+
+          return Left(error.toAuthenticationError);
+        }
+      },
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, void>> requestPasswordReset({
+    required final String email,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        try {
+          await firebaseAuth.sendPasswordResetEmail(email: email);
+
+          return const Right(null);
+        } on FirebaseAuthException catch (error, stacktrace) {
+          logError(error, stacktrace: stacktrace);
+
+          return Left(error.toAuthenticationError);
+        }
+      },
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, void>> resetPassword({
+    required String newPassword,
+    required String confirmationCode,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        try {
+          await firebaseAuth.confirmPasswordReset(
+            code: confirmationCode,
+            newPassword: newPassword,
+          );
+
+          return const Right(null);
+        } on FirebaseAuthException catch (error, stacktrace) {
+          logError(error, stacktrace: stacktrace);
+
+          return Left(error.toAuthenticationError);
+        }
+      },
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, bool>> authenticated() {
+    return Future.value(
+      Right(
+        firebaseAuth.currentUser != null,
+      ),
+    );
+  }
+
+  @override
+  Future<Either<AuthenticationError, void>> logout() {
+    return safeAsyncThrowCall(
+      () async {
+        await firebaseAuth.signOut();
+
+        return const Right(null);
+      },
+    );
+  }
+}
+        {{/usingFirebaseImplementation}}
+
+class Credentials {
+  final String username;
+
+  final String password;
+
+  const Credentials({
+    required this.username,
+    required this.password,
+  });
+
+  const Credentials.email({
+    required String email,
+    required String password,
+  }) : this(username: email, password: password);
+}
+
+abstract class AuthenticationError extends RequestError {
+  const AuthenticationError({
+    required String cause,
+    required StackTrace stacktrace,
+  }) : super(cause: cause, stackTrace: stacktrace);
+
+  static AuthenticationError from(RequestError error) {
+    if (error is AuthenticationError) {
+      return error;
+    } else {
+      return UnknownAuthenticationError(
+        cause: error.cause,
+        stacktrace: error.stackTrace,
+      );
+    }
+  }
+}
+
+class InvalidCredentialsAuthenticationError extends AuthenticationError {
+  const InvalidCredentialsAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Invalid Credentials', stacktrace: stacktrace);
+}
+
+class InvalidEmailAuthenticationError extends AuthenticationError {
+  const InvalidEmailAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Invalid Email', stacktrace: stacktrace);
+}
+
+class EmailAlreadyInUseAuthenticationError extends AuthenticationError {
+  const EmailAlreadyInUseAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Email Already In Use', stacktrace: stacktrace);
+}
+
+class WeakPasswordAuthenticationError extends AuthenticationError {
+  const WeakPasswordAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Weak Password', stacktrace: stacktrace);
+}
+
+class UserDisabledAuthenticationError extends AuthenticationError {
+  const UserDisabledAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Weak Password', stacktrace: stacktrace);
+}
+
+class UserNotFoundAuthenticationError extends AuthenticationError {
+  const UserNotFoundAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'User Not Found', stacktrace: stacktrace);
+}
+
+class WrongPasswordAuthenticationError extends AuthenticationError {
+  const WrongPasswordAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Wrong Password', stacktrace: stacktrace);
+}
+
+class ExpiredConfirmationCodeAuthenticationError extends AuthenticationError {
+  const ExpiredConfirmationCodeAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Expired Confirmation Code', stacktrace: stacktrace);
+}
+
+class InvalidConfirmationCodeAuthenticationError extends AuthenticationError {
+  const InvalidConfirmationCodeAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Invalid Confirmation Code', stacktrace: stacktrace);
+}
+
+class OperationNotAllowedAuthenticationError extends AuthenticationError {
+  const OperationNotAllowedAuthenticationError({
+    required StackTrace stacktrace,
+  }) : super(cause: 'Operation Not Allowed', stacktrace: stacktrace);
+}
+
+class UnknownAuthenticationError extends AuthenticationError {
+  UnknownAuthenticationError({
+    final String? cause,
+    required StackTrace stacktrace,
+  }) : super(
+          cause: 'Unknown Error on Authentication: ${cause?.toString() ?? ''}',
+          stacktrace: stacktrace,
+        );
+}
+
+        {{#usingFirebaseImplementation}}
+extension FirebaseAuthExceptionExtension on FirebaseAuthException {
+  AuthenticationError get toAuthenticationError {
+    late AuthenticationError error;
+    final stacktrace = stackTrace ?? StackTrace.current;
+
+    switch (code) {
+      case 'email-already-in-use':
+        error = EmailAlreadyInUseAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+      case 'invalid-email':
+        error = InvalidEmailAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+      case 'operation-not-allowed':
+        error = OperationNotAllowedAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+      case 'weak-password':
+        error = WeakPasswordAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+      case 'user-disabled':
+        error = UserDisabledAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+      case 'user-not-found':
+        error = UserNotFoundAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+      case 'wrong-password':
+        error = WrongPasswordAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+
+      case 'expired-action-code':
+        error = ExpiredConfirmationCodeAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+
+      case 'invalid-action-code':
+        error = InvalidConfirmationCodeAuthenticationError(
+          stacktrace: stacktrace,
+        );
+
+        break;
+
+      default:
+        error = UnknownAuthenticationError(
+          cause: code,
+          stacktrace: stacktrace,
+        );
+    }
+
+    return error;
+  }
+}
+        {{/usingFirebaseImplementation}}
+    {{/usingAuthenticationTemplate}}
+
+    {{#usingDeviceTemplate}}
+import 'package:dartz/dartz.dart' hide OpenFile;
+import 'package:file_picker/file_picker.dart';
+        {{^generateCoreCode}}
+import 'package:{{projectId}}/core/core.dart';
+import 'package:{{projectId}}/data/data.dart';
+        {{/generateCoreCode}}
+import 'package:image_picker/image_picker.dart';
+import 'package:open_file/open_file.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:video_compress/video_compress.dart';
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:path/path.dart';
+
+abstract class DeviceRepository {
+  Future<Either<RequestError, bool>> share({
+    required final ShareableContent shareable,
+  });
+
+  Future<Either<RequestError, AgnosticFile>> pickFile({
+    FileType type = FileType.any,
+    bool allowMultiple = false,
+  });
+
+  Future<Either<RequestError, AgnosticFile>> pickMedia({
+    required bool isVideo,
+    required bool useCamera,
+  });
+
+  Future<Either<RequestError, void>> openFile({
+    required AgnosticFile file,
+  });
+
+  Future<Either<RequestError, AgnosticFile>> compressFile({
+    required AgnosticFile file,
+    final bool deleteOrigin = false,
+  });
+}
+
+class LiveDeviceRepository implements DeviceRepository {
+  final ImagePicker imagePicker;
+
+  final FilePicker filePicker;
+
+  final IVideoCompress videoCompressor;
+
+  const LiveDeviceRepository({
+    required this.imagePicker,
+    required this.filePicker,
+    required this.videoCompressor,
+  });
+
+  @override
+  Future<Either<RequestError, bool>> share({
+    required final ShareableContent shareable,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        final result = await Share.shareWithResult(
+          shareable.shareText,
+          subject: shareable.title,
+        );
+
+        return Future.value(
+          Right(
+            result.status == ShareResultStatus.success,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<Either<RequestError, AgnosticFile>> pickFile({
+    FileType type = FileType.any,
+    bool allowMultiple = false,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        final result = await filePicker.pickFiles(
+          allowMultiple: allowMultiple,
+          type: type,
+        );
+
+        if (result == null || result.files.isEmpty) {
+          return Left(
+            ReadDeviceError(
+              stacktrace: StackTrace.current,
+            ),
+          );
+        } else {
+          final file = result.files.first;
+
+          return Right(
+            AgnosticFile(
+              path: file.path!,
+              bytes: file.bytes,
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  @override
+  Future<Either<RequestError, AgnosticFile>> pickMedia({
+    required bool isVideo,
+    required bool useCamera,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        XFile? result;
+
+        final imageSource =
+            useCamera ? ImageSource.camera : ImageSource.gallery;
+
+        final pickCall =
+            isVideo ? imagePicker.pickVideo : imagePicker.pickImage;
+
+        result = await pickCall(source: imageSource);
+
+        if (result == null) {
+          return Left(
+            ReadDeviceError(
+              stacktrace: StackTrace.current,
+            ),
+          );
+        } else {
+          final file = result;
+
+          return Right(
+            AgnosticFile(
+              path: file.path,
+              bytes: await file.readAsBytes(),
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  @override
+  Future<Either<RequestError, void>> openFile({
+    required AgnosticFile file,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        final result = await OpenFile.open(file.path);
+
+        if (result.type == ResultType.done) {
+          return const Right(null);
+        } else {
+          return Left(
+            ReadDeviceError(
+              cause: result.message,
+              stacktrace: StackTrace.current,
+            ),
+          );
+        }
+      },
+      onError: (error, stackTrace) => ReadDeviceError(stacktrace: stackTrace),
+    );
+  }
+
+  @override
+  Future<Either<RequestError, AgnosticFile>> compressFile({
+    required AgnosticFile file,
+    final bool deleteOrigin = false,
+  }) {
+    return safeAsyncThrowCall(
+      () async {
+        if (file.isVideo) {
+          final path = file.path;
+
+          final compressionInfo = await videoCompressor.compressVideo(
+            path,
+            deleteOrigin: deleteOrigin,
+            includeAudio: true,
+            quality: VideoQuality.MediumQuality,
+          );
+
+          if (compressionInfo != null) {
+            return Right(
+              AgnosticFile(
+                path: compressionInfo.path!,
+              ),
+            );
+          } else {
+            return Left(
+              WriteDeviceError(
+                cause: 'Could not compress video',
+                stacktrace: StackTrace.current,
+              ),
+            );
+          }
+        } else {
+          return Right(file);
+        }
+      },
+    );
+  }
+}
+
+class AgnosticFile {
+  late Uint8List bytes = _readFile();
+
+  final String path;
+
+  AgnosticFile({
+    required this.path,
+    final Uint8List? bytes,
+  }) {
+    if (bytes != null) {
+      this.bytes = bytes;
+    }
+  }
+
+  String get name => basenameWithoutExtension(path);
+
+  String get fileExtension => extension(path);
+
+  int get size => bytes.lengthInBytes;
+
+  Uint8List _readFile() {
+    return File.fromUri(Uri.parse(path)).readAsBytesSync();
+  }
+}
+
+class ShareableContent {
+  final String title;
+
+  final String content;
+
+  String get shareText => throw 'not implemented yet';
+
+  const ShareableContent({
+    required this.title,
+    required this.content,
+  });
+}
+
+abstract class DeviceError extends RequestError {
+  const DeviceError({
+    required String cause,
+    required StackTrace stacktrace,
+  }) : super(cause: cause, stackTrace: stacktrace);
+}
+
+class ReadDeviceError extends DeviceError {
+  const ReadDeviceError({
+    final String? cause,
+    required StackTrace stacktrace,
+  }) : super(
+          cause: cause ?? 'Could not read device data',
+          stacktrace: stacktrace,
+        );
+}
+
+class WriteDeviceError extends DeviceError {
+  const WriteDeviceError({
+    final String? cause,
+    required StackTrace stacktrace,
+  }) : super(
+          cause: cause ?? 'Could not write device data',
+          stacktrace: stacktrace,
+        );
+}
+    {{/usingDeviceTemplate}}
+    {{#notUsingTemplate}}
+abstract class {{name.pascalCase()}}Repository {
+  Future<Either<RequestError, void>> action({
+    required final String input,
+  });
+}
+
+class Fake{{name.pascalCase()}}Repository implements {{name.pascalCase()}}Repository {
+  @override
+  Future<Either<RequestError, void>> action({
+    required final String input,
+  }) {
+      return Future.value(const Right(null));
+    }
+}
+    {{/notUsingTemplate}}
+    
+    {{#generateCoreCode}}   
+Future<Either<L, R>> safeAsyncThrowCall<L extends RequestError, R>(
+  Future<Either<L, R>> Function() call, {
+  RequestError Function(Object error, StackTrace stackTrace)? onError,
+}) async {
+  try {
+    return await call();
+  } on Object catch (error, stacktrace) {
+    logError(error, stacktrace: stacktrace);
+
+    return Left(
+      (onError?.call(error, stacktrace) ??
+          UnknownError(
+            cause: error.toString(),
+            stackTrace: stacktrace,
+          )) as L,
+    );
+  }
+}
+    {{/generateCoreCode}}
+{{/withDartLanguage}}

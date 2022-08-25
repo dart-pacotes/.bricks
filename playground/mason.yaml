@@ -5,3 +5,5 @@ bricks:
     path: ../cloud_run
   tijolo:
     path: ../tijolo
+  repository:
+    path: ../repository

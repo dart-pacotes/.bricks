@@ -29,10 +29,7 @@ void _formatFiles(final HookContext context) {
       } else {
         final content = file.readAsStringSync();
 
-        final formattedContent = content.replaceAll(
-          RegExp('\n{3,}', multiLine: true),
-          '\n',
-        );
+        final formattedContent = content.trim();
 
         if (content.length != formattedContent.length) {
           file.writeAsStringSync(formattedContent);

@@ -1,0 +1,39 @@
+name: repository
+description: Generates source-code for abstractions of the data layer
+repository: https://github.com/dart-pacotes/.bricks
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+# Variables specify dynamic values that your brick depends on.
+# Zero or more variables can be specified for a given brick.
+# Each variable has:
+#  * a type (string, number, boolean, enum, or array)
+#  * an optional short description
+#  * an optional default value
+#  * an optional list of default values (array only)
+#  * an optional prompt phrase used when asking for the variable
+#  * a list of values (enums only)
+vars:
+  template:
+    type: enum
+    description: Known repository templates to use
+    prompt: Use known template as the repository?
+    default: none
+    values:
+      - authentication
+      - device
+      - none
+  language:
+    type: enum
+    description: Programming language to use for source-code generation
+    prompt: Which programming language is the repository written?
+    default: dart
+    values:
+      - dart
+  projectId:
+    type: string
+    description: ID of the project which the repository is integrated in
+    prompt: What is the identifier of the project which the repository is integrated in?

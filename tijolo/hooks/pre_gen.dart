@@ -12,7 +12,10 @@ void run(HookContext context) {
   var repositoryUrl = '';
 
   if (isOpenSource) {
-    repositoryUrl = logger.prompt('${lightGreen.wrap('?')} Repository URL?');
+    repositoryUrl = logger.prompt(
+      '${lightGreen.wrap('?')} Repository URL?',
+      defaultValue: 'https://github.com/dart-pacotes/.bricks',
+    );
   }
 
   context.vars = {
