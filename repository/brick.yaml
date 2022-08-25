@@ -17,21 +17,6 @@ environment:
 #  * an optional prompt phrase used when asking for the variable
 #  * a list of values (enums only)
 vars:
-  name:
-    type: string
-    description: Name of the repository
-    prompt: What is the name of the repository being generated?
-  projectId:
-    type: string
-    description: ID of the project which the repository is integrated in
-    prompt: What is the identifier of the project which the repository is integrated in?
-  language:
-    type: enum
-    description: Programming language to use for source-code generation
-    prompt: Which programming language is the repository written?
-    default: dart
-    values:
-      - dart
   template:
     type: enum
     description: Known repository templates to use
@@ -41,3 +26,14 @@ vars:
       - authentication
       - device
       - none
+  language:
+    type: enum
+    description: Programming language to use for source-code generation
+    prompt: Which programming language is the repository written?
+    default: dart
+    values:
+      - dart
+  projectId:
+    type: string
+    description: ID of the project which the repository is integrated in
+    prompt: What is the identifier of the project which the repository is integrated in?

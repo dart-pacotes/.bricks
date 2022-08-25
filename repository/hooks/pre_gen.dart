@@ -12,6 +12,7 @@ const _kTemplateImplementationsMap = {
 
 void run(HookContext context) {
   _setFileEntitiesPathBeforeGen(context);
+  _askForNameIfNecessary(context);
   _askForImplementationIfNeccessary(context);
   _askForCoreCodeGenerationIfNeccessary(context);
   _injectCheckers(context);
@@ -23,6 +24,27 @@ void _setFileEntitiesPathBeforeGen(HookContext context) {
   context.vars = {
     ...context.vars,
     'fileEntitiesPathBeforeGen': [...paths],
+  };
+}
+
+void _askForNameIfNecessary(HookContext context) {
+  final template = context.vars['template'] ?? 'none';
+
+  var name = context.vars['name'];
+
+  if (template == 'none') {
+    final logger = context.logger;
+
+    name = logger.prompt(
+      '${lightGreen.wrap('?')} What is the name of the repository being generated?',
+    );
+  } else {
+    name = template;
+  }
+
+  context.vars = {
+    ...context.vars,
+    'name': name,
   };
 }
 
