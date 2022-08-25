@@ -13,6 +13,7 @@ const _kTemplateImplementationsMap = {
 void run(HookContext context) {
   _setFileEntitiesPathBeforeGen(context);
   _askForImplementationIfNeccessary(context);
+  _askForCoreCodeGenerationIfNeccessary(context);
   _injectCheckers(context);
 }
 
@@ -35,7 +36,7 @@ void _askForImplementationIfNeccessary(HookContext context) {
     final logger = context.logger;
 
     implementation = logger.chooseOne(
-      'Use known implementation of the repository?',
+      '${lightGreen.wrap('?')} Use known implementation of the repository?',
       choices: implementationsForTemplate,
       defaultValue: _kNoneImplementation,
     );
@@ -45,6 +46,26 @@ void _askForImplementationIfNeccessary(HookContext context) {
       'implementation': implementation,
     };
   }
+}
+
+void _askForCoreCodeGenerationIfNeccessary(HookContext context) {
+  final template = context.args['template'];
+
+  var generateCoreCode = false;
+
+  if (template != null) {
+    final logger = context.logger;
+
+    generateCoreCode = logger.confirm(
+      '${lightGreen.wrap('?')} Generate core code?',
+      defaultValue: false,
+    );
+  }
+
+  context.vars = {
+    ...context.vars,
+    'generateCoreCode': generateCoreCode,
+  };
 }
 
 void _injectCheckers(HookContext context) {
