@@ -22,26 +22,3 @@ vars:
     type: string
     description: Name of the brick
     prompt: What is the name of the brick being generated?
-  description:
-    type: string
-    description: Description of the brick
-    prompt: How would you describe the brick?
-  author:
-    type: string
-    description: Author of the brick
-    prompt: Who is creating this brick?
-    default: dart-pacotes
-  license:
-    type: enum
-    description: Software source-code license of the brick
-    prompt: Under which license is the brick available?
-    default: MIT
-    values:
-      - MIT
-      - GNUGPLV3
-      - none
-  openSource:
-    type: boolean
-    description: Whether the brick is open-source or not
-    default: true
-    prompt: Is the brick open-source?
