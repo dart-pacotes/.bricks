@@ -1,16 +1,1 @@
-{
-    "bricks": {
-        "browser_automation": {
-            "path": "../browser_automation"
-        },
-        "cloud_run": {
-            "path": "../cloud_run"
-        },
-        "tijolo": {
-            "path": "../tijolo"
-        },
-        "repository": {
-            "path": "../repository"
-        }
-    }
-}
+{"bricks":{"browser_automation":{"path":"../browser_automation"},"cloud_run":{"path":"../cloud_run"},"tijolo":{"path":"../tijolo"},"repository":{"path":"../repository"}}}
