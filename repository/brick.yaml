@@ -17,8 +17,31 @@ environment:
 #  * an optional prompt phrase used when asking for the variable
 #  * a list of values (enums only)
 vars:
-  vars:
   name:
     type: string
-    description: Name of the brick
-    prompt: What is the name of the brick being generated?
+    description: Name of the repository
+    prompt: What is the name of the repository being generated?
+  language:
+    type: enum
+    description: Programming language to use for source-code generation
+    prompt: Which programming language is the repository written?
+    default: dart
+    values:
+      - dart
+  template:
+    type: enum
+    description: Known repository templates to use
+    prompt: Use known template as the repository?
+    default: none
+    values:
+      - authentication
+      - device
+      - none
+  implementations:
+    type: array
+    description: Known implementations of the repository
+    prompt: Use known implementation of the repository?
+    default: none
+    values:
+      - firebase
+      - none
