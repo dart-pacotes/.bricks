@@ -1,4 +1,4 @@
-name: repository
+name: repositorio
 description: Generates source-code for abstractions of the data layer
 repository: https://github.com/dart-pacotes/.bricks
 
