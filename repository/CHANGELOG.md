@@ -1,3 +1,5 @@
 # 0.1.0+1
 
-- TODO: Describe initial release.
+- Initial version of repository
+- Added support for repository with monad usage
+- Added support for Dart language

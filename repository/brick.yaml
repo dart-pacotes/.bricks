@@ -1,6 +1,6 @@
 name: repository
 description: Generates source-code for abstractions of the data layer
-repository: https:&#x2F;&#x2F;github.com&#x2F;dart-pacotes&#x2F;.bricks
+repository: https://github.com/dart-pacotes/.bricks
 
 version: 0.1.0+1
 
