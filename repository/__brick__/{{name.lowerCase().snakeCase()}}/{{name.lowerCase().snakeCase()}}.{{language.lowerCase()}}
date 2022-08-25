@@ -1,0 +1,3 @@
+{{#withDartLanguage}}
+export '{{name.lowerCase().snakeCase()}}_repository.dart';
+{{/withDartLanguage}}
