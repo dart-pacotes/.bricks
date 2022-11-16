@@ -1,0 +1,16 @@
+name: {{name.lowerCase().snakeCase()}}
+description: {{description}}
+version: 0.0.1
+homepage: https://github.com/dart-pacotes/{{name.lowerCase().snakeCase()}}
+repository: https://github.com/dart-pacotes/{{name.lowerCase().snakeCase()}}
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+{{#sideEffectsFree}}
+dependencies:
+  dartz: ^0.10.1
+{{/sideEffectsFree}}
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
