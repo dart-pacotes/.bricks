@@ -1,1 +1,1 @@
-// todo: provide public API here
+// todo: expose public API here

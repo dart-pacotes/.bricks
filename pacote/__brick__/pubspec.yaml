@@ -7,10 +7,10 @@ repository: https://github.com/dart-pacotes/{{name.lowerCase().snakeCase()}}
 environment:
   sdk: ">=2.17.6 <3.0.0"
 
-{{#sideEffectsFree}}
+{{#sideEffectFree}}
 dependencies:
   dartz: ^0.10.1
-{{/sideEffectsFree}}
+{{/sideEffectFree}}
 
 dev_dependencies:
   flutter_lints: ^2.0.0

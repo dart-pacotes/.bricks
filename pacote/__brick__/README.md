@@ -18,14 +18,14 @@ todo: enumerate features package currently provides
 
 todo: enumerate features package does not provide
 
-{{#sideEffectsFree}}
+{{#sideEffectFree}}
 ## Side Effects
 
 Powered by Dart null sound + [`dartz`](https://pub.dev/packages/dartz) 
 monads, this package is free of null issues and side effects. This is to 
 prevent the throw of any exception that may not be known and caught by 
 developers, and to make sure that information is consistent by contract.
-{{/sideEffectsFree}}
+{{/sideEffectFree}}
 
 ---
 
