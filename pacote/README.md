@@ -7,5 +7,5 @@ Template to generate dart packages for dart-pacotes
 ## Usage
 
 ```
-mason make pacote --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license> --openSource <true|false>
+mason make pacote --name <pacote_name> --description <pacote_description> --sideEffectFree <true|false>
 ```
