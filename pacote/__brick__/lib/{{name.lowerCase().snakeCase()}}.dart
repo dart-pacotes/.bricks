@@ -1,3 +1,3 @@
-library web3_storage;
+library {{name.lowerCase().snakeCase()}};
 
 export 'src/{{name.lowerCase().snakeCase()}}.dart';
