@@ -1,6 +1,6 @@
 name: aplicacao
 description: Template to generate Flutter applications that are structured for my own taste and workflow
-repository: https:&#x2F;&#x2F;github.com&#x2F;dart-pacotes&#x2F;.bricks
+repository: https://github.com/dart-pacotes/.bricks
 
 version: 0.1.0+1
 
