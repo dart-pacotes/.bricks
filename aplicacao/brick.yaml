@@ -20,21 +20,21 @@ vars:
   vars:
   name:
     type: string
-    description: Name of the brick
-    prompt: What is the name of the brick being generated?
+    description: Name of the application
+    prompt: What is the name of the application being generated?
   description:
     type: string
-    description: Description of the brick
-    prompt: How would you describe the brick?
+    description: Description of the application
+    prompt: How would you describe the application?
   author:
     type: string
-    description: Author of the brick
-    prompt: Who is creating this brick?
-    default: dart-pacotes
+    description: Author of the application
+    prompt: Who is creating this application?
+    default: freitzzz
   license:
     type: enum
     description: Software source-code license of the brick
-    prompt: Under which license is the brick available?
+    prompt: Under which license is the application available?
     default: MIT
     values:
       - MIT
@@ -42,6 +42,11 @@ vars:
       - none
   openSource:
     type: boolean
-    description: Whether the brick is open-source or not
+    description: Whether the application is open-source or not
     default: true
-    prompt: Is the brick open-source?
+    prompt: Is the application open-source?
+  useCupertinoIcons:
+    type: boolean
+    description: Whether the application will use iOS like icons
+    default: false
+    prompt: Will the application use iOS like icons (cupertino)?
