@@ -2,6 +2,14 @@
 
 {{description}}
 
+## Platform Generation
+
+This template doesn't select any platform to run on. After generating, make sure to generate specific platform code, for the platforms you would like to run on:
+
+```
+flutter create . --platforms android, ios, web --project-name {{name.lowerCase().snakeCase()}}
+```
+
 ## Tooling
 
 Some submodules were added in order to develop in-house tools (see scripts folder). Pull their source-code by running:
