@@ -1,28 +1,26 @@
 import 'package:my_application_name/presentation/widgets/widgets.dart';
 
-const _kFontFamily = 'GillSans';
+const _kFontFamily = 'ComicSansMS';
 
-const _kAppBarBackgroundColorDark = myApplicationNameLogoColor;
-const _kAppBarBackgroundColorLight = myApplicationNameLogoColor;
-const _kBottomNavigationBarUnselectedItemColorOpacity = 0.4;
+const _kApplicationNameLogoColor = Colors.yellow;
+const _kAppBarBackgroundColorDark = _kApplicationNameLogoColor;
+const _kAppBarBackgroundColorLight = _kApplicationNameLogoColor;
 
-final _myApplicationNameTextThemeLight = ThemeData.light().textTheme;
-final _myApplicationNameTextThemeDark = ThemeData.dark().textTheme;
+const myApplicationNameHighlight = Colors.pink;
 
-const myApplicationNameLogoColor = Color(0xFFDCEFD2);
-const myApplicationNameBlack = Color(0xFF64646e);
-const myApplicationNameGrey = Color(0xFFC1C1C5);
-const myApplicationNameHighlight = Color(0xFFE6A08C);
-const myApplicationNameTeacherColor = Color(0xFF7DC3DC);
-const myApplicationNameParentColor = Color(0xFFC8A0DC);
+final _myApplicationNameTextThemeLight =
+    ThemeData.light().textTheme.apply(fontFamily: _kFontFamily);
+
+final _myApplicationNameTextThemeDark =
+    ThemeData.dark().textTheme.apply(fontFamily: _kFontFamily);
 
 final _myApplicationNameLightColorScheme = ColorScheme.fromSeed(
-  seedColor: myApplicationNameLogoColor,
+  seedColor: _kApplicationNameLogoColor,
   brightness: Brightness.light,
 );
 
 final _myApplicationNameDarkColorScheme = ColorScheme.fromSeed(
-  seedColor: myApplicationNameLogoColor,
+  seedColor: _kApplicationNameLogoColor,
   brightness: Brightness.dark,
 );
 
@@ -42,13 +40,6 @@ final myApplicationNameLightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     backgroundColor: _kAppBarBackgroundColorLight,
   ),
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    backgroundColor: _kAppBarBackgroundColorLight,
-    selectedItemColor: Colors.black,
-    unselectedItemColor: Colors.black.withOpacity(
-      _kBottomNavigationBarUnselectedItemColorOpacity,
-    ),
-  ),
 );
 
 final myApplicationNameDarkTheme = ThemeData(
@@ -66,12 +57,5 @@ final myApplicationNameDarkTheme = ThemeData(
   ),
   appBarTheme: const AppBarTheme(
     backgroundColor: _kAppBarBackgroundColorDark,
-  ),
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    backgroundColor: _kAppBarBackgroundColorDark,
-    selectedItemColor: Colors.white,
-    unselectedItemColor: Colors.white.withOpacity(
-      _kBottomNavigationBarUnselectedItemColorOpacity,
-    ),
   ),
 );

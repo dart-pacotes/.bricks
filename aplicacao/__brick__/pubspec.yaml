@@ -56,6 +56,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  fonts:
+    - family: ComicSansMS
+      fonts:
+        - asset: assets/fonts/comicsansms.ttf
+
   assets:
     - assets/images/
 
