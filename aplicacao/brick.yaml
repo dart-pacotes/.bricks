@@ -50,3 +50,28 @@ vars:
     description: Whether the application will use iOS like icons
     default: false
     prompt: Will the application use iOS like icons (cupertino)?
+  includeAuthenticationRepository:
+    type: boolean
+    description: Whether the application should include an authentication repository
+    default: true
+    prompt: Generate off-the-self authentication repository?
+  includeDeviceRepository:
+    type: boolean
+    description: Whether the application should include a device repository
+    default: true
+    prompt: Generate off-the-self device repository?
+  includeSharedPreferencesStorage:
+    type: boolean
+    description: Whether the application should include a shared preferences storage
+    default: true
+    prompt: Generate off-the-self shared preferences storage?
+  includeFileStorage:
+    type: boolean
+    description: Whether the application should include a file storage
+    default: true
+    prompt: Generate off-the-self file storage?
+  useResponsiveFramework:
+    type: boolean
+    description: Whether the application should use responsive framework
+    default: true
+    prompt: Is the app UI responsive?
