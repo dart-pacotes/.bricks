@@ -18,17 +18,19 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         title: Text(strings.homeTitle),
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            strings.greet('my_application_name'),
-          ),
-          const SizedBox.square(
-            dimension: AppDimensions.thirtyTwoPoints,
-          ),
-          const HomeOpenButton(),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              strings.greet('my_application_name'),
+            ),
+            const SizedBox.square(
+              dimension: AppDimensions.thirtyTwoPoints,
+            ),
+            const HomeOpenButton(),
+          ],
+        ),
       ),
     );
   }

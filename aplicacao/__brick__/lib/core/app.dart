@@ -1,4 +1,5 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:funky_backgrounds/funky_backgrounds.dart';
 import 'package:my_application_name/blocs/blocs.dart';
 import 'package:my_application_name/core/core.dart';
 import 'package:my_application_name/data/data.dart';
@@ -14,6 +15,8 @@ class MyApplicationNameApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navigatorKey = GlobalKey<NavigatorState>();
+
     return RepositoryProvider<Vault>(
       create: (context) => vault,
       child: MultiBlocProvider(
@@ -25,7 +28,7 @@ class MyApplicationNameApp extends StatelessWidget {
             ),
           ),
           BlocProvider<AppBloc>(
-            create: (context) => AppBloc(),
+            create: (context) => AppBloc()..add(AppStartEvent()),
           ),
           BlocProvider<DeviceBloc>(
             create: (context) => DeviceBloc(
@@ -33,7 +36,12 @@ class MyApplicationNameApp extends StatelessWidget {
             ),
           ),
         ],
-        child: BlocBuilder<AppBloc, AppState>(
+        child: BlocConsumer<AppBloc, AppState>(
+          listener: (context, state) {
+            if (state is AppStartSuccess) {
+              navigateToHome(navigatorKey.currentContext!);
+            }
+          },
           builder: (_, state) {
             return MaterialApp(
               title: 'myApplicationName',
@@ -47,7 +55,12 @@ class MyApplicationNameApp extends StatelessWidget {
               ],
               supportedLocales: supportedLocales,
               builder: (context, child) => ResponsiveWrapper.builder(
-                child,
+                FunkyBackground(
+                  painter: FunkyBezierLines(
+                    context.colorScheme.primary,
+                  ),
+                  child: child,
+                ),
                 minWidth: AppDimensions.minWidth,
                 defaultScale: true,
                 breakpoints: const [
@@ -64,10 +77,10 @@ class MyApplicationNameApp extends StatelessWidget {
                     name: DESKTOP,
                   ),
                 ],
-                background: Container(color: context.colorScheme.background),
               ),
               initialRoute: initialRoute,
               onGenerateRoute: onGenerateRoute,
+              navigatorKey: navigatorKey,
             );
           },
         ),
