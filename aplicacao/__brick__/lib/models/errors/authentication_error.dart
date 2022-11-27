@@ -1,4 +1,4 @@
-import 'package:my_application_name/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
 
 abstract class AuthenticationError extends RequestError {
   const AuthenticationError({

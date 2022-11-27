@@ -1,4 +1,4 @@
-import 'package:my_application_name/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
 
 abstract class DeviceError extends RequestError {
   const DeviceError({

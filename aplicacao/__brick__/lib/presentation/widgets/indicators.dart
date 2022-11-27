@@ -1,6 +1,6 @@
-import 'package:my_application_name/presentation/assets/assets.dart';
-import 'package:my_application_name/presentation/theme/theme.dart';
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/assets/assets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/theme/theme.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 
 ///
 /// Use when you need to show loading indicators inside [ElevatedButton]
@@ -18,15 +18,15 @@ class ElevatedButtonLoadingIndicator extends StatelessWidget {
       child: CircularProgressIndicator.adaptive(
         strokeWidth: 3.0,
         valueColor: AlwaysStoppedAnimation<Color>(
-          myApplicationNameHighlight,
+          {{name.lowerCase().camelCase()}}Highlight,
         ),
       ),
     );
   }
 }
 
-class MyApplicationNameLoadingIndicator extends StatelessWidget {
-  const MyApplicationNameLoadingIndicator({
+class {{name.pascalCase()}}LoadingIndicator extends StatelessWidget {
+  const {{name.pascalCase()}}LoadingIndicator({
     Key? key,
   }) : super(key: key);
 
@@ -36,7 +36,7 @@ class MyApplicationNameLoadingIndicator extends StatelessWidget {
       child: CircularProgressIndicator.adaptive(
         strokeWidth: 3.0,
         valueColor: AlwaysStoppedAnimation<Color>(
-          myApplicationNameHighlight,
+          {{name.lowerCase().camelCase()}}Highlight,
         ),
       ),
     );

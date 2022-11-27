@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_application_name/data/data.dart';
-import 'package:my_application_name/models/models.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/models.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

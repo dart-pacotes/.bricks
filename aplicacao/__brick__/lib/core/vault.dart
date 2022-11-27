@@ -3,7 +3,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:my_application_name/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher_string.dart';

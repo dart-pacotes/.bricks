@@ -1,4 +1,4 @@
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 
 const String _kAppLogoAssetPath = 'assets/images/logo.png';
 
@@ -9,7 +9,7 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyApplicationNameImage.asset(
+    return const {{name.pascalCase()}}Image.asset(
       assetPath: _kAppLogoAssetPath,
     );
   }

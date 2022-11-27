@@ -7,5 +7,5 @@ Template to generate Flutter applications that are structured for my own taste a
 ## Usage
 
 ```
-mason make aplicacao --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license> --openSource <true|false>
+mason make aplicacao --name <app_name> --description <app_description> --author <app_author> --license <brick_license>
 ```

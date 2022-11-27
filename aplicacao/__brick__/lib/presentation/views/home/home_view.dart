@@ -1,7 +1,7 @@
-import 'package:my_application_name/blocs/blocs.dart';
-import 'package:my_application_name/presentation/assets/assets.dart';
-import 'package:my_application_name/presentation/widgets/widgets.dart';
-import 'package:my_application_name/presentation/extensions/extensions.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/blocs/blocs.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/assets/assets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/extensions/extensions.dart';
 
 part 'home_open_button.dart';
 
@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              strings.greet('my_application_name'),
+              strings.greet('{{name.lowerCase().snakeCase()}}'),
             ),
             const SizedBox.square(
               dimension: AppDimensions.thirtyTwoPoints,

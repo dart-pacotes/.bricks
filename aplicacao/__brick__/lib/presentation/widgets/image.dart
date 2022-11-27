@@ -3,34 +3,34 @@
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:my_application_name/models/models.dart';
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/models.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 
-class MyApplicationNameImage extends StatelessWidget {
+class {{name.pascalCase()}}Image extends StatelessWidget {
   final AgnosticFile? image;
 
   final String? imageUrl;
 
   final String? assetPath;
 
-  const MyApplicationNameImage._({
+  const {{name.pascalCase()}}Image._({
     Key? key,
     this.image,
     this.imageUrl,
     this.assetPath,
   }) : super(key: key);
 
-  const MyApplicationNameImage.network({
+  const {{name.pascalCase()}}Image.network({
     Key? key,
     required String imageUrl,
   }) : this._(key: key, imageUrl: imageUrl);
 
-  const MyApplicationNameImage.memory({
+  const {{name.pascalCase()}}Image.memory({
     Key? key,
     required AgnosticFile image,
   }) : this._(key: key, image: image);
 
-  const MyApplicationNameImage.asset({
+  const {{name.pascalCase()}}Image.asset({
     Key? key,
     required String assetPath,
   }) : this._(key: key, assetPath: assetPath);
@@ -39,7 +39,7 @@ class MyApplicationNameImage extends StatelessWidget {
   Widget build(BuildContext context) {
     if (image != null) {
       return Image(
-        image: MyApplicationNameCacheImageProvider(
+        image: {{name.pascalCase()}}CacheImageProvider(
           bytes: image!.bytes,
           uniqueKey: image!.name,
         ),
@@ -52,17 +52,17 @@ class MyApplicationNameImage extends StatelessWidget {
   }
 }
 
-class MyApplicationNameCacheImageProvider extends MemoryImage {
+class {{name.pascalCase()}}CacheImageProvider extends MemoryImage {
   final String uniqueKey;
 
-  const MyApplicationNameCacheImageProvider({
+  const {{name.pascalCase()}}CacheImageProvider({
     required this.uniqueKey,
     required final Uint8List bytes,
   }) : super(bytes);
 
   @override
   Future<MemoryImage> obtainKey(ImageConfiguration configuration) {
-    return SynchronousFuture<MyApplicationNameCacheImageProvider>(this);
+    return SynchronousFuture<{{name.pascalCase()}}CacheImageProvider>(this);
   }
 
   @override
@@ -108,6 +108,6 @@ class MyApplicationNameCacheImageProvider extends MemoryImage {
 
   @override
   String toString() {
-    return 'MyApplicationNameImage($uniqueKey)';
+    return '{{name.pascalCase()}}Image($uniqueKey)';
   }
 }

@@ -2,9 +2,11 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 const _kFileNamesPresentInBlackList = ['.DS_Store'];
+const _kFileExtensionsIgnoreList = ['.ttf', '.png'];
 
 void run(HookContext context) {
   _formatFiles(context);
+  _formatFlutterProject(context);
 }
 
 void _formatFiles(final HookContext context) {
@@ -21,7 +23,11 @@ void _formatFiles(final HookContext context) {
   final formattedFiles = <File>[];
 
   for (final file in files) {
-    if (file is File && !pathsOfFileEntitiesToIgnore.contains(file.path)) {
+    if (file is File &&
+        !pathsOfFileEntitiesToIgnore.contains(file.path) &&
+        _kFileExtensionsIgnoreList
+            .where((x) => file.path.endsWith(x))
+            .isEmpty) {
       final fileName = file.path.split(Platform.pathSeparator).last;
 
       if (_kFileNamesPresentInBlackList.contains(fileName)) {
@@ -53,4 +59,16 @@ void _formatFiles(final HookContext context) {
   } else {
     progress.complete('No files needed to format.');
   }
+}
+
+void _formatFlutterProject(final HookContext context) {
+  final logger = context.logger;
+  final directory = Directory.current;
+
+  logger.info('Formatting Flutter project');
+
+  Process.run(
+    'flutter',
+    ['format', directory.path],
+  );
 }

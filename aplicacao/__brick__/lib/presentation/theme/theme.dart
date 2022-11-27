@@ -1,4 +1,4 @@
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 
 const _kFontFamily = 'ComicSansMS';
 
@@ -6,35 +6,35 @@ const _kApplicationNameLogoColor = Colors.yellow;
 const _kAppBarBackgroundColorDark = _kApplicationNameLogoColor;
 const _kAppBarBackgroundColorLight = _kApplicationNameLogoColor;
 
-const myApplicationNameHighlight = Colors.pink;
+const {{name.lowerCase().camelCase()}}Highlight = Colors.pink;
 
-final _myApplicationNameTextThemeLight =
+final _{{name.lowerCase().camelCase()}}TextThemeLight =
     ThemeData.light().textTheme.apply(fontFamily: _kFontFamily);
 
-final _myApplicationNameTextThemeDark =
+final _{{name.lowerCase().camelCase()}}TextThemeDark =
     ThemeData.dark().textTheme.apply(fontFamily: _kFontFamily);
 
-final _myApplicationNameLightColorScheme = ColorScheme.fromSeed(
+final _{{name.lowerCase().camelCase()}}LightColorScheme = ColorScheme.fromSeed(
   seedColor: _kApplicationNameLogoColor,
   brightness: Brightness.light,
 );
 
-final _myApplicationNameDarkColorScheme = ColorScheme.fromSeed(
+final _{{name.lowerCase().camelCase()}}DarkColorScheme = ColorScheme.fromSeed(
   seedColor: _kApplicationNameLogoColor,
   brightness: Brightness.dark,
 );
 
-final myApplicationNameLightTheme = ThemeData(
-  textTheme: _myApplicationNameTextThemeLight,
+final {{name.lowerCase().camelCase()}}LightTheme = ThemeData(
+  textTheme: _{{name.lowerCase().camelCase()}}TextThemeLight,
   useMaterial3: true,
-  colorScheme: _myApplicationNameLightColorScheme,
+  colorScheme: _{{name.lowerCase().camelCase()}}LightColorScheme,
   fontFamily: _kFontFamily,
   checkboxTheme: CheckboxThemeData(
     checkColor: MaterialStateProperty.all(
-      _myApplicationNameLightColorScheme.onPrimary,
+      _{{name.lowerCase().camelCase()}}LightColorScheme.onPrimary,
     ),
     fillColor: MaterialStateProperty.all(
-      _myApplicationNameLightColorScheme.inversePrimary,
+      _{{name.lowerCase().camelCase()}}LightColorScheme.inversePrimary,
     ),
   ),
   appBarTheme: const AppBarTheme(
@@ -42,17 +42,17 @@ final myApplicationNameLightTheme = ThemeData(
   ),
 );
 
-final myApplicationNameDarkTheme = ThemeData(
-  textTheme: _myApplicationNameTextThemeDark,
+final {{name.lowerCase().camelCase()}}DarkTheme = ThemeData(
+  textTheme: _{{name.lowerCase().camelCase()}}TextThemeDark,
   useMaterial3: true,
-  colorScheme: _myApplicationNameDarkColorScheme,
+  colorScheme: _{{name.lowerCase().camelCase()}}DarkColorScheme,
   fontFamily: _kFontFamily,
   checkboxTheme: CheckboxThemeData(
     checkColor: MaterialStateProperty.all(
-      _myApplicationNameDarkColorScheme.onPrimary,
+      _{{name.lowerCase().camelCase()}}DarkColorScheme.onPrimary,
     ),
     fillColor: MaterialStateProperty.all(
-      _myApplicationNameDarkColorScheme.inversePrimary,
+      _{{name.lowerCase().camelCase()}}DarkColorScheme.inversePrimary,
     ),
   ),
   appBarTheme: const AppBarTheme(

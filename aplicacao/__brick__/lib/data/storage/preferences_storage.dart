@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_application_name/core/core.dart';
-import 'package:my_application_name/data/data.dart';
-import 'package:my_application_name/models/models.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/core/core.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class PreferencesStorage implements Storage<String, String> {}

@@ -1,12 +1,12 @@
 import 'package:networking/networking.dart';
 import 'package:http/http.dart';
 
-class MyApplicationNameNetworkingClient extends NetworkingClient {
-  MyApplicationNameNetworkingClient()
+class {{name.pascalCase()}}NetworkingClient extends NetworkingClient {
+  {{name.pascalCase()}}NetworkingClient()
       : super(
           baseUrl: Uri(
             scheme: 'https',
-            host: 'my_application_name-mkruqxiwda-ew.a.run.app',
+            host: '{{name.lowerCase().snakeCase()}}-mkruqxiwda-ew.a.run.app',
           ),
           httpClient: Client(),
         );

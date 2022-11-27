@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_application_name/blocs/blocs.dart';
-import 'package:my_application_name/logging/logging.dart';
-import 'package:my_application_name/core/core.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/blocs/blocs.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/logging/logging.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/core/core.dart';
 
 void main() {
   BlocOverrides.runZoned(
@@ -29,7 +29,7 @@ void main() {
       );
 
       runApp(
-        MyApplicationNameApp(
+        {{name.pascalCase()}}App(
           vault: vault,
         ),
       );

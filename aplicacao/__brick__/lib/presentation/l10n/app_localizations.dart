@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
-import 'package:my_application_name/models/models.dart';
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/models.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 import 'messages/messages_all.dart';
 
 const kDefaultLocale = Locale('en');
@@ -64,7 +64,7 @@ class AppLocalizations {
   String get open {
     return Intl.message(
       'Open',
-      name: 'openTitle',
+      name: 'open',
       desc: '"Open" word',
       locale: localeName,
     );

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_application_name/data/data.dart';
-import 'package:my_application_name/logging/logging.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/logging/logging.dart';
 
 Either<Object, R> safeSyncThrowCall<R>(
   Either<Object, R> Function() call,

@@ -1,14 +1,14 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:funky_backgrounds/funky_backgrounds.dart';
-import 'package:my_application_name/blocs/blocs.dart';
-import 'package:my_application_name/core/core.dart';
-import 'package:my_application_name/data/data.dart';
-import 'package:my_application_name/presentation/presentation.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/blocs/blocs.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/core/core.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/presentation.dart';
 
-class MyApplicationNameApp extends StatelessWidget {
+class {{name.pascalCase()}}App extends StatelessWidget {
   final Vault vault;
 
-  const MyApplicationNameApp({
+  const {{name.pascalCase()}}App({
     Key? key,
     required this.vault,
   }) : super(key: key);
@@ -44,8 +44,8 @@ class MyApplicationNameApp extends StatelessWidget {
           },
           builder: (_, state) {
             return MaterialApp(
-              title: 'myApplicationName',
-              theme: myApplicationNameLightTheme,
+              title: '{{name.lowerCase()}}',
+              theme: {{name.lowerCase().camelCase()}}LightTheme,
               themeMode: ThemeMode.light,
               localizationsDelegates: const [
                 AppLocalizations.delegate,
@@ -54,6 +54,7 @@ class MyApplicationNameApp extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: supportedLocales,
+              {{#useResponsiveFramework}}
               builder: (context, child) => ResponsiveWrapper.builder(
                 FunkyBackground(
                   painter: FunkyBezierLines(
@@ -78,6 +79,17 @@ class MyApplicationNameApp extends StatelessWidget {
                   ),
                 ],
               ),
+              {{/useResponsiveFramework}}
+              {{^useResponsiveFramework}}
+              builder: (context, child) {
+                return FunkyBackground(
+                  painter: FunkyBezierLines(
+                    context.colorScheme.primary,
+                  ),
+                  child: child,
+              );
+              },
+              {{/useResponsiveFramework}}
               initialRoute: initialRoute,
               onGenerateRoute: onGenerateRoute,
               navigatorKey: navigatorKey,

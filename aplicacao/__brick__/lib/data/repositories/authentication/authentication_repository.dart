@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_application_name/models/models.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/models.dart';
 
 abstract class AuthenticationRepository {
   Future<Either<AuthenticationError, void>> login({

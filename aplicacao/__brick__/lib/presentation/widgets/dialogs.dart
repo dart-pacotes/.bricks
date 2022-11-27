@@ -1,6 +1,6 @@
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 
-void showMyApplicationNameOneActionDialog(
+void show{{name.pascalCase()}}OneActionDialog(
   BuildContext context,
   String title,
   String content,
@@ -9,7 +9,7 @@ void showMyApplicationNameOneActionDialog(
   showDialog(
     context: context,
     builder: (_) {
-      return MyApplicationNameOneActionAlertDialog(
+      return {{name.pascalCase()}}OneActionAlertDialog(
         title: title,
         content: content,
         actionLabel: actionLabel,
@@ -18,7 +18,7 @@ void showMyApplicationNameOneActionDialog(
   );
 }
 
-void showMyApplicationNameTwoActionDialog(
+void show{{name.pascalCase()}}TwoActionDialog(
   BuildContext context,
   String title,
   String content,
@@ -29,7 +29,7 @@ void showMyApplicationNameTwoActionDialog(
   showDialog(
     context: context,
     builder: (_) {
-      return MyApplicationNameTwoActionAlertDialog(
+      return {{name.pascalCase()}}TwoActionAlertDialog(
         title: title,
         content: content,
         primaryActionLabel: primaryActionLabel,
@@ -53,12 +53,12 @@ class BackgroundlessCircularProgressIndicatorDialog extends StatelessWidget {
   }
 }
 
-class MyApplicationNameOneActionAlertDialog extends StatelessWidget {
+class {{name.pascalCase()}}OneActionAlertDialog extends StatelessWidget {
   final String title;
   final String content;
   final String actionLabel;
 
-  const MyApplicationNameOneActionAlertDialog({
+  const {{name.pascalCase()}}OneActionAlertDialog({
     Key? key,
     required this.title,
     required this.content,
@@ -82,14 +82,14 @@ class MyApplicationNameOneActionAlertDialog extends StatelessWidget {
   }
 }
 
-class MyApplicationNameTwoActionAlertDialog extends StatelessWidget {
+class {{name.pascalCase()}}TwoActionAlertDialog extends StatelessWidget {
   final String title;
   final String content;
   final String primaryActionLabel;
   final String secondaryActionLabel;
   final VoidCallback primaryAction;
 
-  const MyApplicationNameTwoActionAlertDialog({
+  const {{name.pascalCase()}}TwoActionAlertDialog({
     Key? key,
     required this.title,
     required this.content,

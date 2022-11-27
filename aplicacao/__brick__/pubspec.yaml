@@ -1,5 +1,5 @@
-name: my_application_name
-description: A new Flutter project.
+name: {{name.lowerCase().snakeCase()}}
+description: {{description}}
 
 publish_to: "none"
 
@@ -25,7 +25,9 @@ dependencies:
     sdk: flutter
 
   colorize_lumberdash: 3.0.0
+  {{#useCupertinoIcons}}
   cupertino_icons: 1.0.2
+  {{/useCupertinoIcons}}
   dartz: 0.10.1
   file_picker: 4.6.1
   flutter_bloc: 8.0.1
@@ -41,7 +43,9 @@ dependencies:
   open_file: 3.2.1
   path_provider: 2.0.11
   path: 1.8.2
+  {{#useResponsiveFramework}}
   responsive_framework: 0.2.0
+  {{/useResponsiveFramework}}
   share_plus: 4.5.3
   shared_preferences: 2.0.15
   url_launcher: 6.1.7
@@ -52,6 +56,8 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  intl_generator: 0.3.0
+  arb_generator: 0.0.1
 
 flutter:
   uses-material-design: true

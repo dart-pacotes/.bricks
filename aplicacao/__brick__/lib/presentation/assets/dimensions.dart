@@ -9,8 +9,10 @@ class AppDimensions {
   static const fortyEightPoints = 48.0;
   static const sixtyFourPoints = 64.0;
   static const oneHundredTwentyEightPoints = 128.0;
+  {{#useResponsiveFramework}}
   static const minWidth = 375.0;
   static const mobileResizeBreakpoint = 480.0;
   static const tabletScaleBreakpoint = 800.0;
   static const desktopResizeBreakpoint = 1000.0;
+  {{/useResponsiveFramework}}
 }

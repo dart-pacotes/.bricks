@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_application_name/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
 
 export 'file_storage.dart';
 export 'preferences_storage.dart';

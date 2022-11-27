@@ -1,4 +1,4 @@
-import 'package:my_application_name/models/models.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/models.dart';
 
 class ShareableContent {
   final String title;

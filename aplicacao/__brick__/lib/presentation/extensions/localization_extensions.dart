@@ -1,5 +1,5 @@
-import 'package:my_application_name/presentation/l10n/l10n.dart';
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/l10n/l10n.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 
 extension LocalizationExtensions on BuildContext {
   AppLocalizations get strings {

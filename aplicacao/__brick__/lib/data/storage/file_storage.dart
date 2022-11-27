@@ -5,9 +5,9 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart';
-import 'package:my_application_name/core/core.dart';
-import 'package:my_application_name/data/data.dart';
-import 'package:my_application_name/models/models.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/core/core.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/models.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
 abstract class FileStorage implements Storage<Uint8List, AgnosticFile> {

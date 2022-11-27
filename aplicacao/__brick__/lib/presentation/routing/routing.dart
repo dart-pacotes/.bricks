@@ -1,5 +1,5 @@
-import 'package:my_application_name/presentation/views/views.dart';
-import 'package:my_application_name/presentation/widgets/widgets.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/views/views.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/presentation/widgets/widgets.dart';
 
 const appStartupRoute = '/';
 const homeRoute = '/home';

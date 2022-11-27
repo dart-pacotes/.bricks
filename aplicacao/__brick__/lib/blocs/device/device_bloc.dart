@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_application_name/data/data.dart';
-import 'package:my_application_name/models/agnostic_file.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/data/data.dart';
+import 'package:{{name.lowerCase().snakeCase()}}/models/agnostic_file.dart';
 
 part 'device_event.dart';
 part 'device_state.dart';
