@@ -11,3 +11,5 @@ bricks:
     path: ../repositorio
   tijolo:
     path: ../tijolo
+  aplicacao_web:
+    path: ../aplicacao_web
