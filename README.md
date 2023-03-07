@@ -9,6 +9,7 @@ Most of these bricks were created for my personal use, but certainly they can su
 |Name|Description|Example|
 |----|-----------|-------|
 |aplicacao|Template to generate Flutter applications that fit my taste and workflow|[aplicacao-brick-sample-gen](https://github.com/freitzzz/aplicacao-brick-sample-gen)|
+|aplicacao_web|A very opiniated SvelteKit template that fits my own taste and workflow|[svelte-kit-template-with-github-pages-adapter](hhttps://github.com/freitas-labs/svelte-kit-template-with-github-pages-adapter)|
 |browser_automation|Template to build CLI applications that perform browser automation using [puppeteer](https://github.com/xvrh/puppeteer-dart)|[randomize-photo-mosh](https://github.com/cobrinhas/randomize-photo-mosh)|
 |cloud_run|Template to build ready-for-deploy applications in GCP Cloud Run|[node-cloud-run](https://github.com/freitzzz/node-cloud-run)|
 |pacote|Template to generate dart packages for dart-pacotes|[web3.storage](https://github.com/dart-pacotes/web3.storage)|
