@@ -1,5 +1,7 @@
 {
-	"name": "replace-by-name",
+	"name": "{{name.lowerCase().paramCase()}}",
+	"description": "{{description}}",
+	"author": "{{author}}",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -10,15 +12,18 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"typesafe-i18n": "typesafe-i18n",
-		// keep if github pages is chosen
-		"deploy": "npx gh-pages -d build -b master -r https://github.com/<github_username>/<repo_hosting_static_pages> -t true --no-jekyll"
+		{{#useGitHubPagesAdapter}}
+		"deploy": "npx gh-pages -d build -b master -r https://github.com/<github_username>/<repo_hosting_static_pages> -t true --no-jekyll",
+		{{/useGitHubPagesAdapter}}
+		"typesafe-i18n": "typesafe-i18n"
 	},
 	"devDependencies": {
-		// keep if node is chosen	
+		{{#useNodeAdapter}}
 		"@sveltejs/adapter-node": "^1.2.1",
-		// keep if github pages is chosen
+		{{/useNodeAdapter}}
+		{{#useGitHubPagesAdapter}}
 		"@sveltejs/adapter-static": "^2.0.1",
+		{{/useGitHubPagesAdapter}}
 		"@sveltejs/kit": "^1.5.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",

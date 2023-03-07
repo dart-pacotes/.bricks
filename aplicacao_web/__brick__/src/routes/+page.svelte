@@ -3,7 +3,7 @@
 	import { LL } from '@i18n';
 </script>
 
-<Heading value="<name>" />
+<Heading value="{{name.lowerCase().snakeCase()}}" />
 <div class="flex flex-row justify-evenly">
 	<CardNoImage />
 	<CardWithImage />

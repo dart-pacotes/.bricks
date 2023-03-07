@@ -1,6 +1,10 @@
 import { vitePreprocess } from '@sveltejs/kit/vite';
-// import if github pages is chosen
+{{#useGitHubPagesAdapter}}
 import adapter from '@sveltejs/adapter-static';
+{{/useGitHubPagesAdapter}}
+{{#useNodeAdapter}}
+import adapter from '@sveltejs/adapter-node';
+{{/useNodeAdapter}}
 
 import path from 'path';
 
@@ -11,7 +15,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// use if github pages is chosen
+		{{#useGitHubPagesAdapter}}
 		adapter: adapter({
 			// default options are shown. On some platforms
 			// these options are set automatically — see below
@@ -21,6 +25,10 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
+		{{/useGitHubPagesAdapter}}
+		{{#useNodeAdapter}}
+		adapter: adapter(),
+		{{/useNodeAdapter}}
 		alias: {
 			'@components': path.resolve('./src/lib/components/index.ts'),
 			'@http': path.resolve('./src/lib/http/index.ts'),

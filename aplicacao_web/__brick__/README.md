@@ -1,6 +1,6 @@
-# <name>
+# {{name.lowerCase().snakeCase()}}
 
-<description>
+{{description}}
 
 ## Hooks
 
@@ -42,14 +42,13 @@ To deploy your app:
 npm run deploy
 ```
 
+{{#useNodeAdapter}}
 ---
-
-keep if docker is chosen
 
 Alternatively, you can deploy your app within a Docker container. First, build the image:
 
 ```bash
-docker_tag=replace-by-name:latest
+docker_tag={{name.lowerCase().paramCase()}}:latest
 docker build -f ./Dockerfile . -t $docker_tag
 ```
 
@@ -59,34 +58,13 @@ Then, spawn a container:
 docker run -p 3000:3000 -t $docker_tag
 ```
 
+{{/useNodeAdapter}}
 
+### Contact
 
+This template was prepared by:
 
+- João Freitas, @freitzzz
+- Rute Santos, @rutesantos4
 
-
-
-#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-features
-
-1. Svelte template with TS, Prettier, ESLint, aliases, git client hooks, static files
-2. TailwindCSS + RippleUI + Class level Theme
-3. typesafe-i18n
-4. Adapter (either)
-    4.1 GitHub Pages (default)
-    4.2 Node (optional)
-5. SEO (favicon, meta elements)
+Contact us for freelancing work!
