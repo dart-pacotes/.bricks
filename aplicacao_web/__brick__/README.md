@@ -1,4 +1,4 @@
-# {{name.lowerCase().snakeCase()}}
+# {{name.lowerCase().paramCase()}}
 
 {{description}}
 
