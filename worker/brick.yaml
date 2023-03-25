@@ -1,8 +1,8 @@
 name: worker
 description: A very opiniated Cloudflare Worker template that fits my own taste and workflow
-repository: https:&#x2F;&#x2F;github.com&#x2F;.bricks&#x2F;worker
+repository: https://github.com/dart-pacotes/.bricks/worker
 
-version: 0.1.0+1
+version: 0.0.1
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
