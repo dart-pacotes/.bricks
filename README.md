@@ -15,6 +15,7 @@ Most of these bricks were created for my personal use, but certainly they can su
 |pacote|Template to generate dart packages for dart-pacotes|[web3.storage](https://github.com/dart-pacotes/web3.storage)|
 |repositorio|Generates source-code for abstractions of the data layer|[dart-firebase-authentication-repository](https://github.com/freitzzz/dart-firebase-authentication-repository)|
 |tijolo|Template to generate bricks for dart-pacotes/.bricks|[tijolo](https://github.com/dart-pacotes/.bricks/tree/master/tijolo)|
+|worker|A very opiniated Cloudflare Worker template that fits my own taste and workflow|[worker](https://github.com/nolytics/worker)
 
 They are also published in [brickhub.dev](https://brickhub.dev/).
 
