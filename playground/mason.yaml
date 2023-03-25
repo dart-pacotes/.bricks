@@ -1,6 +1,8 @@
 bricks:
   aplicacao:
     path: ../aplicacao
+  aplicacao_web:
+    path: ../aplicacao_web
   browser_automation:
     path: ../browser_automation
   cloud_run:
@@ -11,5 +13,5 @@ bricks:
     path: ../repositorio
   tijolo:
     path: ../tijolo
-  aplicacao_web:
-    path: ../aplicacao_web
+  worker:
+    path: ../worker
