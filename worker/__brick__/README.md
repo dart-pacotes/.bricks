@@ -19,3 +19,12 @@ IFS='='; ENV_FILE=.dev.vars; cat $ENV_FILE | while read line || [[ -n $line ]]; 
 ```
 
 Deploy to Cloudflare via `npm run deploy`
+
+### Contact
+
+This template was prepared by:
+
+- João Freitas, @freitzzz
+- Rute Santos, @rutesantos4
+
+Contact us if you need help on your project!
