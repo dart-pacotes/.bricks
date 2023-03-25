@@ -8,7 +8,12 @@
   },
   "private": true,
   "scripts": {
+    {{#isFetchWorker}}
     "start": "wrangler dev",
+    {{/isFetchWorker}}
+    {{^isFetchWorker}}
+    "start": "wrangler dev --test-scheduled",
+    {{/isFetchWorker}}
     "deploy": "wrangler publish"
   }
 }

@@ -10,6 +10,10 @@ This worker was bootstrapped using [worker brick](https://github.com/dart-pacote
 
 Run the local server via `npm run start`
 
+{{^isFetchWorker}}
+Trigger an instant cronjob via `curl "http://localhost:8787/__scheduled?cron=*+*+*+*+*"` 
+{{/isFetchWorker}}
+
 ## Deploy
 
 Setup worker environment variables with the following one-line:
