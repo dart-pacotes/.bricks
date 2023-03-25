@@ -17,31 +17,24 @@ environment:
 #  * an optional prompt phrase used when asking for the variable
 #  * a list of values (enums only)
 vars:
-  vars:
   name:
     type: string
-    description: Name of the brick
-    prompt: What is the name of the brick being generated?
+    description: Name of the worker
+    prompt: What is the name of the worker being generated?
   description:
     type: string
-    description: Description of the brick
-    prompt: How would you describe the brick?
+    description: Description of the worker
+    prompt: How would you describe the worker?
   author:
     type: string
-    description: Author of the brick
-    prompt: Who is creating this brick?
-    default: dart-pacotes
-  license:
+    description: Author of the worker
+    prompt: Who is creating this worker?
+    default: freitzzz
+  type:
     type: enum
-    description: Software source-code license of the brick
-    prompt: Under which license is the brick available?
-    default: MIT
+    description: Type of worker in use
+    default: fetch
+    prompt: Which worker type will you use?
     values:
-      - MIT
-      - GNUGPLV3
-      - none
-  openSource:
-    type: boolean
-    description: Whether the brick is open-source or not
-    default: true
-    prompt: Is the brick open-source?
+      - fetch
+      - scheduled
