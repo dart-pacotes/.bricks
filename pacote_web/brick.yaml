@@ -1,0 +1,47 @@
+name: pacote_web
+description: A very opiniated TypeScript Node library template that fits my own taste and workflow
+repository: https://github.com/dart-pacotes/.bricks/tree/master/pacote_web
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+# Variables specify dynamic values that your brick depends on.
+# Zero or more variables can be specified for a given brick.
+# Each variable has:
+#  * a type (string, number, boolean, enum, or array)
+#  * an optional short description
+#  * an optional default value
+#  * an optional list of default values (array only)
+#  * an optional prompt phrase used when asking for the variable
+#  * a list of values (enums only)
+vars:
+  vars:
+  name:
+    type: string
+    description: Name of the brick
+    prompt: What is the name of the brick being generated?
+  description:
+    type: string
+    description: Description of the brick
+    prompt: How would you describe the brick?
+  author:
+    type: string
+    description: Author of the brick
+    prompt: Who is creating this brick?
+    default: dart-pacotes
+  license:
+    type: enum
+    description: Software source-code license of the brick
+    prompt: Under which license is the brick available?
+    default: MIT
+    values:
+      - MIT
+      - GNUGPLV3
+      - none
+  openSource:
+    type: boolean
+    description: Whether the brick is open-source or not
+    default: true
+    prompt: Is the brick open-source?
