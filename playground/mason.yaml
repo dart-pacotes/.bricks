@@ -15,3 +15,5 @@ bricks:
     path: ../tijolo
   worker:
     path: ../worker
+  pacote_web:
+    path: ../pacote_web
