@@ -1,8 +1,9 @@
-import 'dart:io';
 import 'package:mason/mason.dart';
 
 void run(HookContext context) {
   _setLicenseDetails(context);
+  _setIsLibraryCheck(context);
+  _setWithHotReloadCheck(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -17,5 +18,27 @@ void _setLicenseDetails(HookContext context) {
     'underMIT': underMIT,
     'underGNUGPLV3': underGNUGPLV3,
     'licenseYear': licenseYear,
+  };
+}
+
+void _setIsLibraryCheck(HookContext context) {
+  final type = context.vars['type'];
+
+  final isLibrary = type == 'library';
+
+  context.vars = {
+    ...context.vars,
+    'isLibrary': isLibrary,
+  };
+}
+
+void _setWithHotReloadCheck(HookContext context) {
+  final useHotReload = context.vars['hotreload'];
+
+  final withHotReload = useHotReload == true;
+
+  context.vars = {
+    ...context.vars,
+    'withHotReload': withHotReload,
   };
 }
