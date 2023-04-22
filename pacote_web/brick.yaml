@@ -7,41 +7,40 @@ version: 0.1.0+1
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
 
-# Variables specify dynamic values that your brick depends on.
-# Zero or more variables can be specified for a given brick.
-# Each variable has:
-#  * a type (string, number, boolean, enum, or array)
-#  * an optional short description
-#  * an optional default value
-#  * an optional list of default values (array only)
-#  * an optional prompt phrase used when asking for the variable
-#  * a list of values (enums only)
 vars:
   vars:
   name:
     type: string
-    description: Name of the brick
-    prompt: What is the name of the brick being generated?
+    description: Name of the package
+    prompt: What is the name of the package being generated?
   description:
     type: string
-    description: Description of the brick
-    prompt: How would you describe the brick?
+    description: Description of the package
+    prompt: How would you describe the package?
   author:
     type: string
-    description: Author of the brick
-    prompt: Who is creating this brick?
-    default: dart-pacotes
+    description: Author of the package
+    prompt: Who is creating this package?
+    default: web-pacotes
+  type:
+    type: enum
+    description: Type of the package
+    prompt: Under which type does the package fall into?
+    default: library
+    values:
+      - standalone
+      - library
+  hotreload:
+    type: boolean
+    description: Support for hotreload
+    default: false
+    prompt: Is hotreload needed?
   license:
     type: enum
-    description: Software source-code license of the brick
-    prompt: Under which license is the brick available?
+    description: Software source-code license of the package
+    prompt: Under which license is the package available?
     default: MIT
     values:
       - MIT
       - GNUGPLV3
       - none
-  openSource:
-    type: boolean
-    description: Whether the brick is open-source or not
-    default: true
-    prompt: Is the brick open-source?
