@@ -5,6 +5,9 @@
 	"main": "dist/index.js",
 	"module": "dist/index.cjs",
 	"types": "dist/index.d.ts",
+	{{#isLibrary}}
+	"sideEffects": false,
+	{{/isLibrary}}
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs,esm --dts --sourcemap",
 		"start": "swc src/index.ts -d dist && node dist/index.js",
