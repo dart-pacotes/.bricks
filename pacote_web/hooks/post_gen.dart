@@ -1,59 +1,59 @@
 import 'dart:io';
 import 'package:mason/mason.dart';
 
-const _kFileNamesPresentInBlackList = ['.DS_Store'];
-
 void run(HookContext context) {
-  _formatFiles(context);
+  if (_isNPMAvailable()) {
+    _installDependencies(context);
+    _formatFiles(context);
+  }
+}
+
+bool _isNPMAvailable() {
+  final checkCommandAvailabilityStatus = Process.runSync(
+    'command',
+    ['-v', 'npm'],
+    runInShell: true,
+  );
+
+  return (checkCommandAvailabilityStatus.stdout?.toString() ?? '').length > 0;
+}
+
+void _installDependencies(final HookContext context) {
+  final logger = context.logger;
+  final directory = Directory.current;
+
+  final progress = logger.progress('Installing dependencies');
+
+  logger.info('Running npm install');
+
+  final npmInstallStatus = Process.runSync(
+    'npm',
+    ['i'],
+    runInShell: true,
+    workingDirectory: directory.path,
+  );
+
+  logger.info(npmInstallStatus.stdout);
+
+  progress.complete('Finish formatting.');
 }
 
 void _formatFiles(final HookContext context) {
   final logger = context.logger;
   final directory = Directory.current;
 
-  final pathsOfFileEntitiesToIgnore =
-      context.vars['fileEntitiesPathBeforeGen'] as List;
-
-  final files = directory.listSync(recursive: true);
-
   final progress = logger.progress('Formatting files');
 
-  final formattedFiles = <File>[];
+  logger.info('Running npm run format');
 
-  for (final file in files) {
-    if (file is File && !pathsOfFileEntitiesToIgnore.contains(file.path)) {
-      final fileName = file.path.split(Platform.pathSeparator).last;
+  final npmRunFormatStatus = Process.runSync(
+    'npm',
+    ['run', 'format'],
+    runInShell: true,
+    workingDirectory: directory.path,
+  );
 
-      if (_kFileNamesPresentInBlackList.contains(fileName)) {
-        file.deleteSync();
-      } else {
-        final content = file.readAsStringSync();
+  logger.info(npmRunFormatStatus.stdout);
 
-        final formattedContent = content.replaceAll(
-          RegExp('\n{3,}', multiLine: true),
-          '\n',
-        );
-
-        if (content.length != formattedContent.length) {
-          file.writeAsStringSync(formattedContent);
-
-          formattedFiles.add(file);
-        }
-      }
-    }
-  }
-
-  if (formattedFiles.isNotEmpty) {
-    progress.complete('Formatted ${formattedFiles.length} file(s):');
-
-    formattedFiles.forEach(
-      (file) {
-        logger.info(
-          '  ${darkGray.wrap(file.absolute.path)} ${lightGreen.wrap('(formatted)')}',
-        );
-      },
-    );
-  } else {
-    progress.complete('No files needed to format.');
-  }
+  progress.complete('Finish formatting.');
 }
