@@ -13,6 +13,7 @@ Most of these bricks were created for my personal use, but certainly they can su
 |browser_automation|Template to build CLI applications that perform browser automation using [puppeteer](https://github.com/xvrh/puppeteer-dart)|[randomize-photo-mosh](https://github.com/cobrinhas/randomize-photo-mosh)|
 |cloud_run|Template to build ready-for-deploy applications in GCP Cloud Run|[node-cloud-run](https://github.com/freitzzz/node-cloud-run)|
 |pacote|Template to generate dart packages for dart-pacotes|[web3.storage](https://github.com/dart-pacotes/web3.storage)|
+|pacote_web|Template to generate TypeScript Node packages|[npm-typescript-publish](https://github.com/freitas-labs/npm-typescript-publish)|
 |repositorio|Generates source-code for abstractions of the data layer|[dart-firebase-authentication-repository](https://github.com/freitzzz/dart-firebase-authentication-repository)|
 |tijolo|Template to generate bricks for dart-pacotes/.bricks|[tijolo](https://github.com/dart-pacotes/.bricks/tree/master/tijolo)|
 |worker|A very opiniated Cloudflare Worker template that fits my own taste and workflow|[worker](https://github.com/nolytics/worker)
