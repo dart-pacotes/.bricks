@@ -30,9 +30,9 @@ todo: enumerate features package does not provide
 
 - `npm run build` to transpile and bundle files in `.cjs`, `.js`, `.d.ts` and respective source-maps
 - `npm run start` to run the project with `swc` compilation
-{{#withHotreload}}
+{{#withHotReload}}
 - `npm run start:hot` to run the project with hot-reload enabled
-{{/withHotreload}}
+{{/withHotReload}}
 - `npm run test` to run the unit tests
 - `npm run lint` to analyze and lint the project
 - `npm run format` to format the project based on lint feedback
