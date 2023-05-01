@@ -8,7 +8,6 @@ environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
 
 vars:
-  vars:
   name:
     type: string
     description: Name of the package
@@ -31,3 +30,7 @@ vars:
       - MIT
       - GNUGPLV3
       - none
+  modulePath:
+    type: string
+    description: Module Path of the package
+    prompt: What is the go module path for this package?
