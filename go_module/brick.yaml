@@ -34,3 +34,8 @@ vars:
     type: string
     description: Module Path of the package
     prompt: What is the go module path for this package?
+  dependabot:
+    type: boolean
+    description: Support for dependabot
+    prompt: Is dependabot needed?
+    default: false
