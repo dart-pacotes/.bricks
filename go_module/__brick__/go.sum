@@ -1,2 +1,4 @@
+github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
+github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 github.com/palavrapasse/aspirador v0.0.5 h1:Z1IkbdCaR/wOT6wZT0n3GTuibW6muy97L9vmZKz6S8Q=
 github.com/palavrapasse/aspirador v0.0.5/go.mod h1:1LJFZgJoNr7In+g3PQHWwK6/Dha9jsiTT2jMV/eiAX8=
