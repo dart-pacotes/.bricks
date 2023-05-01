@@ -4,6 +4,7 @@ import 'package:mason/mason.dart';
 void run(HookContext context) {
   _setLicenseDetails(context);
   _setModulePath(context);
+  _setWithDependabotCheck(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -25,5 +26,16 @@ void _setModulePath(HookContext context) {
   context.vars = {
     ...context.vars,
     'modulePath': context.vars['modulePath'],
+  };
+}
+
+void _setWithDependabotCheck(HookContext context) {
+  final useDependabot = context.vars['dependabot'];
+
+  final withDependabot = useDependabot == true;
+
+  context.vars = {
+    ...context.vars,
+    'withDependabot': withDependabot,
   };
 }
