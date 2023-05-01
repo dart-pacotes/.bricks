@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      time: "20:00"
+    commit-message:
+      prefix: "bump"
+      include: "scope"
