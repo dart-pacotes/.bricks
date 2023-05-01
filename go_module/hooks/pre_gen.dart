@@ -4,6 +4,7 @@ import 'package:mason/mason.dart';
 void run(HookContext context) {
   _setFileEntitiesPathBeforeGen(context);
   _setLicenseDetails(context);
+  _setModulePath(context);
 
   final logger = context.logger;
 
@@ -42,5 +43,12 @@ void _setLicenseDetails(HookContext context) {
     'underMIT': underMIT,
     'underGNUGPLV3': underGNUGPLV3,
     'licenseYear': licenseYear,
+  };
+}
+
+void _setModulePath(HookContext context) {
+  context.vars = {
+    ...context.vars,
+    'modulePath': context.vars['modulePath'],
   };
 }
