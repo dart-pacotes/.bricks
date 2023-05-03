@@ -1,0 +1,7 @@
+package pkg
+
+type TodoItem struct {
+    Id          float64
+    Name        string
+    IsComplete  bool
+}
