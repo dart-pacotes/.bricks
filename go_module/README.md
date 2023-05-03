@@ -18,5 +18,5 @@ These are the things you get if you use this template:
 ## Usage
 
 ```bash
-mason make go_module --name <package_name> --description <package_description> --author <package_author> --license <MIT|GNUGPLV3|none> --modulePath <golang_module_path> --dependabot <true|false>
+mason make go_module --name <package_name> --description <package_description> --author <package_author> --type <library|cli|webService> --license <MIT|GNUGPLV3|none> --modulePath <golang_module_path> --dependabot <true|false>
 ```

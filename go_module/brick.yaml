@@ -21,6 +21,15 @@ vars:
     description: Author of the package
     prompt: Who is creating this package?
     default: dart-pacotes
+  type:
+    type: enum
+    description: Type of the package
+    prompt: Under which type does the package fall into?
+    default: library
+    values:
+      - library
+      - cli
+      - webService
   license:
     type: enum
     description: Software source-code license of the package
