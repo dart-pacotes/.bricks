@@ -1,4 +1,4 @@
-module github.com/go_modules
+module {{modulePath}}
 
 go 1.19
 
