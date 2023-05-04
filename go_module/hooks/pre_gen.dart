@@ -6,6 +6,7 @@ void run(HookContext context) {
   _setModulePath(context);
   _setWithDependabotCheck(context);
   _setTypeDetails(context);
+  _setName(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -53,5 +54,12 @@ void _setTypeDetails(HookContext context) {
     'isLibrary': isLibrary,
     'isCli': isCli,
     'isWebService': isWebService,
+  };
+}
+
+void _setName(HookContext context) {
+  context.vars = {
+    ...context.vars,
+    'name': context.vars['name'],
   };
 }
