@@ -8,6 +8,7 @@ void run(HookContext context) {
   _setTypeDetails(context);
   _setName(context);
   _setAuthor(context);
+  _setDescription(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -69,5 +70,12 @@ void _setAuthor(HookContext context) {
   context.vars = {
     ...context.vars,
     'author': context.vars['author'],
+  };
+}
+
+void _setDescription(HookContext context) {
+  context.vars = {
+    ...context.vars,
+    'description': context.vars['description'],
   };
 }
