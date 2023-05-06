@@ -1,0 +1,6 @@
+package cli
+
+var AliasesFlagString = []string{"s"}
+var AliasesFlagPath = []string{"p"}
+var AliasesFlagDate = []string{"d"}
+var AliasesFlagList = []string{"l"}

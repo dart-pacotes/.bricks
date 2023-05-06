@@ -1,0 +1,38 @@
+package cli
+
+import (
+	"fmt"
+	"sort"
+	"time"
+
+	"github.com/urfave/cli/v2"
+)
+
+func CreateCliApp(processResult func(context string, path string, dateFormat string, listSlice []string)) cli.App {
+
+	var path string
+	var context string
+	var list cli.StringSlice
+	var date cli.Timestamp
+
+	app := &cli.App{
+		Name:                 "{{name}}",
+		Version:              "v0.0.1",
+		Usage:                "{{description}}",
+		Copyright:            fmt.Sprintf("(c) %d {{author}}", time.Now().Year()),
+		Suggest:              true,
+		EnableBashCompletion: true,
+		HideHelp:             false,
+		HideVersion:          false,
+		Authors:              CreateCliAuthors(),
+		Flags:                CreateCliFlags(&context, &path, &date, &list),
+		Action:               CreateAction(&context, &path, &date, &list, processResult),
+	}
+
+	cli.AppHelpTemplate = CreateAppHelpTemplate(cli.AppHelpTemplate)
+
+	sort.Sort(cli.FlagsByName(app.Flags))
+	sort.Sort(cli.CommandsByName(app.Commands))
+
+	return *app
+}

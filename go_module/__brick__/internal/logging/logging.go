@@ -23,8 +23,14 @@ var loggingFilePath = os.Getenv(loggingFilePathEnvKey)
 
 var Aspirador as.Aspirador
 
+{{^isCli}}
 func CreateAspiradorClients(serverAddress string) []as.Client {
 	patternLayout := as.PatternLayout(fmt.Sprintf("[%s] [%s] %s %s %s.%s:%s : %s", as.LevelPattern, serverAddress, as.DatePattern, as.TimePattern, as.FileNamePattern, as.MethodPattern, as.LinePattern, as.MessagePattern))
+{{/isCli}}
+{{#isCli}}
+func CreateAspiradorClients() []as.Client {
+	patternLayout := as.PatternLayout(fmt.Sprintf("[%s] %s %s %s.%s:%s : %s", as.LevelPattern, as.DatePattern, as.TimePattern, as.FileNamePattern, as.MethodPattern, as.LinePattern, as.MessagePattern))
+{{/isCli}}
 
 	consoleClient := as.NewConsoleClient()
 	consoleClient.SetPatternLayout(patternLayout)
