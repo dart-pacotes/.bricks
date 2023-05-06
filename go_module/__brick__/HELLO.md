@@ -1,1 +1,0 @@
-Hello go_module!
