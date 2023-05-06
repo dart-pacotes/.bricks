@@ -7,6 +7,7 @@ void run(HookContext context) {
   _setWithDependabotCheck(context);
   _setTypeDetails(context);
   _setName(context);
+  _setAuthor(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -61,5 +62,12 @@ void _setName(HookContext context) {
   context.vars = {
     ...context.vars,
     'name': context.vars['name'],
+  };
+}
+
+void _setAuthor(HookContext context) {
+  context.vars = {
+    ...context.vars,
+    'author': context.vars['author'],
   };
 }
