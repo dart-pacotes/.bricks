@@ -1,14 +1,19 @@
 module {{modulePath}}
 
 go 1.19
-
+{{^isLibrary}}
 require (
 	github.com/joho/godotenv v1.5.1
+{{#isWebService}}
 	github.com/labstack/echo/v4 v4.10.2
+{{/isWebService}}
 	github.com/palavrapasse/aspirador v0.0.5
+{{#isCli}}
 	github.com/urfave/cli/v2 v2.25.3
+{{/isCli}}
 )
 
+{{#isWebService}}
 require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/labstack/gommon v0.4.0 // indirect
@@ -23,3 +28,5 @@ require (
 	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 )
+{{/isWebService}}
+{{/isLibrary}}
