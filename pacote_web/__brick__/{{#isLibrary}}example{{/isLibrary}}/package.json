@@ -1,0 +1,14 @@
+{
+    "name": "{{name.lowerCase().paramCase()}}-example",
+    "version": "0.0.0",
+    "description": "Example project to test {{name.lowerCase().paramCase()}}",
+    "main": "dist/index.js",
+    "module": "dist/index.cjs",
+    "types": "dist/index.d.ts",
+    "sideEffects": false,
+    "author": "{{author}}",
+    "license": "{{license}}",
+    "dependencies": {
+        "{{name.lowerCase().paramCase()}}": "file:../"
+    }
+}

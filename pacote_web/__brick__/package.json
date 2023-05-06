@@ -10,7 +10,12 @@
 	{{/isLibrary}}
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs,esm --dts --sourcemap",
-		"start": "swc src/index.ts -d dist && node dist/index.js",
+		{{#isLibrary}}
+		"start": "swc src/* -d dist && swc example/index.ts -d example/dist && node example/dist/index.js",
+		{{/isLibrary}}
+		{{^isLibrary}}
+		"start": "swc src/* -d dist && node dist/index.js",
+		{{/isLibrary}}
 		{{#withHotReload}}
 		"start:hot": "npx nodemon",
 		{{/withHotReload}}
@@ -48,7 +53,6 @@
 		"url": "https://github.com/{{author}}/{{name.lowerCase().paramCase()}}/issues"
 	},
 	"homepage": "https://github.com/{{author}}/{{name.lowerCase().paramCase()}}#readme",
-	"type": "module",
 	"devDependencies": {
 		{{#isLibrary}}
 		"@changesets/cli": "^2.26.1",
