@@ -14,7 +14,7 @@ EXAMPLE:
 	%s
 
 WEBSITE:
-	https://{{modulePath}}
+	https://{{{modulePath}}}
 
 `, base, exampleCommand)
 }

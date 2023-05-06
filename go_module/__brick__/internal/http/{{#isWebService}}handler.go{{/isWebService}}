@@ -6,7 +6,7 @@ import (
     "math/rand"
 
 	"github.com/labstack/echo/v4"
-	"{{modulePath}}/internal/logging"
+	"{{{modulePath}}}/internal/logging"
 )
 
 func RegisterHandlers(e *echo.Echo) {

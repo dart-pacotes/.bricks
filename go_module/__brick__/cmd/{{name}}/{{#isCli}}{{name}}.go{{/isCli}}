@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	as "github.com/palavrapasse/aspirador/pkg"
-	"{{modulePath}}/internal/cli"
-	"{{modulePath}}/internal/logging"
+	"{{{modulePath}}}/internal/cli"
+	"{{{modulePath}}}/internal/logging"
 )
 
 func main() {

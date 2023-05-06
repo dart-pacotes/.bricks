@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"{{modulePath}}/internal/logging"
+	"{{{modulePath}}}/internal/logging"
 	"github.com/urfave/cli/v2"
 )
 

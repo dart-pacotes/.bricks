@@ -6,9 +6,9 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/labstack/echo/v4"
 	as "github.com/palavrapasse/aspirador/pkg"
-	"{{modulePath}}/internal/data"
-	"{{modulePath}}/internal/http"
-	"{{modulePath}}/internal/logging"
+	"{{{modulePath}}}/internal/data"
+	"{{{modulePath}}}/internal/http"
+	"{{{modulePath}}}/internal/logging"
 )
 
 func main() {
