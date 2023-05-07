@@ -5,6 +5,7 @@ void run(HookContext context) {
   _setLicenseDetails(context);
   _setModulePath(context);
   _setWithDependabotCheck(context);
+  _setWithThrottlingCheck(context);
   _setTypeDetails(context);
   _setName(context);
   _setAuthor(context);

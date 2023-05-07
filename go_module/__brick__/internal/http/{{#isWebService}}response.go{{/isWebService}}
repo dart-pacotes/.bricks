@@ -17,3 +17,8 @@ func Ok(ectx echo.Context, i interface{}) error {
 func InternalServerError(ectx echo.Context) error {
 	return ectx.NoContent(http.StatusInternalServerError)
 }
+{{#withThrottling}}
+func TooManyRequests(ectx echo.Context) error {
+	return ectx.NoContent(http.StatusTooManyRequests)
+}
+{{/withThrottling}}

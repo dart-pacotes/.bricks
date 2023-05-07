@@ -10,6 +10,9 @@ import (
 
 func RegisterMiddlewares(e *echo.Echo) {
 	e.Use(loggingMiddleware())
+	{{#withThrottling}}
+	e.Use(throttlingMiddleware())
+	{{/withThrottling}}
 }
 
 func loggingMiddleware() echo.MiddlewareFunc {
@@ -24,3 +27,24 @@ func loggingMiddleware() echo.MiddlewareFunc {
 		}
 	}
 }
+{{#withThrottling}}
+func throttlingMiddleware() echo.MiddlewareFunc {
+	te := NewThrottlingEngine()
+
+	te.StartThrottlingEngineCleanUp()
+
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(ectx echo.Context) error {
+			req := ectx.Request()
+
+			if !te.CanAllowRequest(*req) {
+				logging.Aspirador.Warning(fmt.Sprintf("denying request for %s endpoint, too many requests (429)", req.URL.Path))
+
+				return TooManyRequests(ectx)
+			}
+
+			return next(ectx)
+		}
+	}
+}
+{{/withThrottling}}
