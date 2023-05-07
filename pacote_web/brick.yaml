@@ -43,3 +43,8 @@ vars:
       - MIT
       - GNUGPLV3
       - none
+  isOrganization:
+    type: boolean
+    description: If the package is developed by an organization
+    default: true
+    prompt: Is this package developed by an organization?
