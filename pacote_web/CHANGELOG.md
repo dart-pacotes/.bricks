@@ -1,3 +1,10 @@
+# 0.1.1
+
+- Fix `swc` only compiling `index.ts`
+- Add support for typedocs
+- Fix mason trying to render GitHub Actions Workflows variables
+- Added support for publishing as an organization
+
 # 0.1.0+1
 
 - Release first version of `pacote-web`-
