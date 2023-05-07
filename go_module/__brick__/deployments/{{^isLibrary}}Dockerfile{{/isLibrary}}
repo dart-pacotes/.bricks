@@ -1,6 +1,12 @@
 FROM golang:1.19.3-alpine AS builder
 WORKDIR /app
-
+{{^isOpenSource}}
+# START - Private Repositories: remove this after repositories are public (+ git-credentials)
+RUN --mount=type=secret,id=git-credentials cp /run/secrets/git-credentials ~/.git-credentials
+RUN apk add git
+RUN git config --global credential.helper store
+# END - Private Repositories
+{{/isOpenSource}}
 COPY go.mod ./
 COPY go.sum ./
 

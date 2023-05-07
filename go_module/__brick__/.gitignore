@@ -142,9 +142,10 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/go,visualstudiocode,git,linux,windows,macos,snyk,dotenv
 
 # also ignore any .txt files
-
 *.txt
 
 # also ignore any .log files
-
 *.log
+
+# also ignore any .local-git-credentials files
+.local-git-credentials
