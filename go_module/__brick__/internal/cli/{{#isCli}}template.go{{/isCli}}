@@ -1,0 +1,20 @@
+package cli
+
+import (
+	"fmt"
+)
+
+var exampleCommand = fmt.Sprintf(`./{{name}} --string="string" --path="path/to/some/file.txt" --date="%s" --list="el1, el2"`,
+	DateFormatLayout)
+
+func CreateAppHelpTemplate(base string) string {
+
+	return fmt.Sprintf(`%s
+EXAMPLE: 
+	%s
+
+WEBSITE:
+	https://{{{modulePath}}}
+
+`, base, exampleCommand)
+}

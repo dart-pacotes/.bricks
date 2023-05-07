@@ -12,6 +12,7 @@ Most of these bricks were created for my personal use, but certainly they can su
 |aplicacao_web|A very opiniated SvelteKit template that fits my own taste and workflow|[svelte-kit-template-with-github-pages-adapter](https://github.com/freitas-labs/svelte-kit-template-with-github-pages-adapter)|
 |browser_automation|Template to build CLI applications that perform browser automation using [puppeteer](https://github.com/xvrh/puppeteer-dart)|[randomize-photo-mosh](https://github.com/cobrinhas/randomize-photo-mosh)|
 |cloud_run|Template to build ready-for-deploy applications in GCP Cloud Run|[node-cloud-run](https://github.com/freitzzz/node-cloud-run)|
+|go_module|A very opiniated golang module template that fits my own taste and workflow|[santos](https://github.com/palavrapasse/santos)|
 |pacote|Template to generate dart packages for dart-pacotes|[web3.storage](https://github.com/dart-pacotes/web3.storage)|
 |pacote_web|Template to generate TypeScript Node packages|[npm-typescript-publish](https://github.com/freitas-labs/npm-typescript-publish)|
 |repositorio|Generates source-code for abstractions of the data layer|[dart-firebase-authentication-repository](https://github.com/freitzzz/dart-firebase-authentication-repository)|

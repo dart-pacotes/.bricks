@@ -1,0 +1,97 @@
+package cli
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+
+	"{{{modulePath}}}/internal/logging"
+	"github.com/urfave/cli/v2"
+)
+
+
+const (
+	DateFormatLayout = "2006-01-02"
+)
+const MaxErrorLogCalls = 20000
+
+func CreateAction(context *string, path *string, date *cli.Timestamp, list *cli.StringSlice, processResult func(context string, path string, dateFormat string, listSlice []string)) func(cCtx *cli.Context) error {
+	return func(cCtx *cli.Context) error {
+		logging.Aspirador.Info("Starting Action")
+
+		var errors []error
+
+		err := validateNonEmptyValue(*context, FlagString)
+		errors = appendValidError(errors, err)
+
+		err = validateNonEmptyValue(*path, FlagPath)
+		errors = appendValidError(errors, err)
+
+		listSlice := list.Value()
+		err = validateFlagValues(listSlice, FlagDate)
+		errors = appendValidError(errors, err)
+
+		dateFormat := date.Value().Format(DateFormatLayout)
+
+		errorsCount := len(errors)
+
+		if errorsCount != 0 {
+
+			if errorsCount > MaxErrorLogCalls {
+				logging.Aspirador.Warning(fmt.Sprintf("Found a lot of errors (%d)...", errorsCount))
+			} else {
+				logging.Aspirador.Warning("Found the following errors:")
+
+				for _, v := range errors {
+					logging.Aspirador.Warning(v.Error())
+				}
+			}
+
+			fmt.Println("Proceed?")
+			reader := bufio.NewReader(os.Stdin)
+			input, _, errRead := reader.ReadLine()
+
+			if errRead != nil {
+				return errRead
+			}
+
+			if !IsProceedAnswer(proceedAnswers, strings.ToLower(string(input))) {
+				logging.Aspirador.Info("Stopped Action")
+				return nil
+			}
+		}
+
+		processResult(*context, *path, dateFormat, listSlice)
+		
+		logging.Aspirador.Info("Action Ended")
+		
+		return nil
+	}
+}
+
+
+func validateNonEmptyValue(value string, flag string) error {
+	if len(strings.TrimSpace(value)) == 0 {
+		return fmt.Errorf("%s should not be empty or only white spaces", flag)
+	}
+
+	return nil
+}
+
+func validateFlagValues(value []string, flag string) error {
+	if len(value) == 0 {
+		return fmt.Errorf("%s should not be empty", flag)
+	}
+
+	return nil
+}
+
+func appendValidError(errors []error, err error) []error {
+
+	if err != nil {
+		errors = append(errors, err)
+	}
+
+	return errors
+}

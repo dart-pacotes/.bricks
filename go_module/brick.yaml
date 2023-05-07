@@ -1,0 +1,55 @@
+name: go_module
+description: A very opiniated golang module template that fits my own taste and workflow
+repository: https://github.com/dart-pacotes/.bricks/tree/master/go_module
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+vars:
+  name:
+    type: string
+    description: Name of the package
+    prompt: What is the name of the package being generated?
+  description:
+    type: string
+    description: Description of the package
+    prompt: How would you describe the package?
+  author:
+    type: string
+    description: Author of the package
+    prompt: Who is creating this package?
+    default: dart-pacotes
+  type:
+    type: enum
+    description: Type of the package
+    prompt: Under which type does the package fall into?
+    default: library
+    values:
+      - library
+      - cli
+      - webService
+  license:
+    type: enum
+    description: Software source-code license of the package
+    prompt: Under which license is the package available?
+    default: MIT
+    values:
+      - MIT
+      - GNUGPLV3
+      - none
+  modulePath:
+    type: string
+    description: Module Path of the package
+    prompt: What is the go module path for this package?
+  dependabot:
+    type: boolean
+    description: Support for dependabot
+    prompt: Is dependabot needed?
+    default: false
+  openSource:
+    type: boolean
+    description: Whether the package is open-source or not
+    default: true
+    prompt: Is the package open-source?

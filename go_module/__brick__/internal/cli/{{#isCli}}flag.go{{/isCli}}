@@ -1,0 +1,47 @@
+package cli
+
+import (
+	"github.com/urfave/cli/v2"
+)
+
+const (
+	FlagString = "string"
+	FlagPath   = "path"
+	FlagDate   = "date"
+	FlagList   = "list"
+)
+
+func CreateCliFlags(context *string, path *string, date *cli.Timestamp, list *cli.StringSlice) []cli.Flag {
+
+	return []cli.Flag{
+		&cli.StringFlag{
+			Name:        FlagString,
+			Aliases:     AliasesFlagString,
+			Usage:       "String",
+			Required:    true,
+			Destination: context,
+		},
+		&cli.PathFlag{
+			Name:        FlagPath,
+			Aliases:     AliasesFlagPath,
+			Usage:       "Path",
+			Required:    true,
+			Destination: path,
+		},
+		&cli.TimestampFlag{
+			Name:        FlagDate,
+			Aliases:     AliasesFlagDate,
+			Usage:       "Date",
+			Layout:      DateFormatLayout,
+			Required:    true,
+			Destination: date,
+		},
+		&cli.StringSliceFlag{
+			Name:        FlagList,
+			Aliases:     AliasesFlagList,
+			Usage:       "List (separated by commas)",
+			Required:    true,
+			Destination: list,
+		},
+	}
+}

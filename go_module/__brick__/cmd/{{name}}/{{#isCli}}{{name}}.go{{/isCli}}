@@ -1,0 +1,32 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"strings"
+
+	as "github.com/palavrapasse/aspirador/pkg"
+	"{{{modulePath}}}/internal/cli"
+	"{{{modulePath}}}/internal/logging"
+)
+
+func main() {
+
+	logging.Aspirador = as.WithClients(logging.CreateAspiradorClients())
+
+	app := cli.CreateCliApp(processResult)
+
+	if err := app.Run(os.Args); err != nil {
+		logging.Aspirador.Error(err.Error())
+		return
+	}
+}
+
+func processResult(context string, path string, dateFormat string, listSlice []string) {
+
+	logging.Aspirador.Info("Process Result")
+	logging.Aspirador.Info(fmt.Sprintf("Context: %s", context))
+	logging.Aspirador.Info(fmt.Sprintf("Path: %s", path))
+	logging.Aspirador.Info(fmt.Sprintf("Date: %s", dateFormat))
+	logging.Aspirador.Info(fmt.Sprintf("List: %s", strings.Join(listSlice[:], ",")))
+}
