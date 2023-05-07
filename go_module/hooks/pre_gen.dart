@@ -48,11 +48,15 @@ void _setWithDependabotCheck(HookContext context) {
 }
 
 void _setWithThrottlingCheck(HookContext context) {
+  final logger = context.logger;
   final type = context.vars['type'];
-  final useThrottling = context.vars['throttling'];
-
   final isWebService = type == 'webService';
-  final withThrottling = useThrottling == true;
+
+  var withThrottling = false;
+
+  if(isWebService){
+    withThrottling = logger.confirm('Is throttling needed?', defaultValue: false);
+  }
 
   context.vars = {
     ...context.vars,
@@ -61,11 +65,15 @@ void _setWithThrottlingCheck(HookContext context) {
 }
 
 void _setWithCorsCheck(HookContext context) {
+  final logger = context.logger;
   final type = context.vars['type'];
-  final useCors = context.vars['cors'];
-
   final isWebService = type == 'webService';
-  final withCors = useCors == true;
+
+  var withCors = false;
+
+  if(isWebService){
+    withCors = logger.confirm('Is cors needed?', defaultValue: false);
+  }
 
   context.vars = {
     ...context.vars,
