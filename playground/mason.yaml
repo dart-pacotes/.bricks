@@ -17,3 +17,5 @@ bricks:
     path: ../worker
   pacote_web:
     path: ../pacote_web
+  go_module:
+    path: ../go_module
