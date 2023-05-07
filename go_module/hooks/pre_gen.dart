@@ -44,6 +44,19 @@ void _setWithDependabotCheck(HookContext context) {
   };
 }
 
+void _setWithThrottlingCheck(HookContext context) {
+  final type = context.vars['type'];
+  final useThrottling = context.vars['throttling'];
+
+  final isWebService = type == 'webService';
+  final withThrottling = useThrottling == true;
+
+  context.vars = {
+    ...context.vars,
+    'withThrottling': isWebService && withThrottling,
+  };
+}
+
 void _setTypeDetails(HookContext context) {
   final type = context.vars['type'];
 
