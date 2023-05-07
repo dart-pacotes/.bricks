@@ -36,6 +36,8 @@ todo: enumerate features package does not provide
 - `npm run test` to run the unit tests
 - `npm run lint` to analyze and lint the project
 - `npm run format` to format the project based on lint feedback
+- `npm run docs` to generate docs site
+- `npm run docs:publish` to generate docs site and publish it to GitHub Pages
 {{#isLibrary}}
 - `npm run release` to create the temporary changesets file
 - `npm run publish` to publish the package to NPM

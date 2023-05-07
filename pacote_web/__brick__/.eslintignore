@@ -7,3 +7,4 @@ ignore
 !.env.example
 
 package-lock.json
+docs

@@ -20,14 +20,9 @@
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
 	},
 	"include": ["src/**/*"],
-	{{#withHotReload}}
-	"exclude": ["node_modules", "dist/**/*", "coverage/**/*"],
-	/* Required for nodemon */
-	"ts-node": {
-		"esm": true
-	}
-	{{/withHotReload}}
-	{{^withHotReload}}
+	"typedocOptions": {
+		"entryPoints": ["src/index.ts"],
+		"out": "docs"
+	},
 	"exclude": ["node_modules", "dist/**/*", "coverage/**/*"]
-	{{/withHotReload}}
 }
