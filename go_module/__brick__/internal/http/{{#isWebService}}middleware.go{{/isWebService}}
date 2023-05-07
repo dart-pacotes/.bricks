@@ -10,6 +10,9 @@ import (
 
 func RegisterMiddlewares(e *echo.Echo) {
 	e.Use(loggingMiddleware())
+	{{#withCors}}
+	e.Use(corsMiddleware())
+	{{/withCors}}
 	{{#withThrottling}}
 	e.Use(throttlingMiddleware())
 	{{/withThrottling}}
@@ -27,6 +30,11 @@ func loggingMiddleware() echo.MiddlewareFunc {
 		}
 	}
 }
+{{#withCors}}
+func corsMiddleware() echo.MiddlewareFunc {
+	return middleware.CORSWithConfig(CORSConfig())
+}
+{{/withCors}}
 {{#withThrottling}}
 func throttlingMiddleware() echo.MiddlewareFunc {
 	te := NewThrottlingEngine()
