@@ -6,6 +6,7 @@ void run(HookContext context) {
   _setModulePath(context);
   _setWithDependabotCheck(context);
   _setWithThrottlingCheck(context);
+  _setWithCorsCheck(context);
   _setTypeDetails(context);
   _setName(context);
   _setAuthor(context);
@@ -55,6 +56,19 @@ void _setWithThrottlingCheck(HookContext context) {
   context.vars = {
     ...context.vars,
     'withThrottling': isWebService && withThrottling,
+  };
+}
+
+void _setWithCorsCheck(HookContext context) {
+  final type = context.vars['type'];
+  final useCors = context.vars['cors'];
+
+  final isWebService = type == 'webService';
+  final withCors = useCors == true;
+
+  context.vars = {
+    ...context.vars,
+    'withCors': isWebService && withCors,
   };
 }
 
