@@ -53,3 +53,8 @@ vars:
     description: Support for throttling
     prompt: Is throttling needed?
     default: false
+  cors:
+    type: boolean
+    description: Support for cors
+    prompt: Is cors needed?
+    default: false
