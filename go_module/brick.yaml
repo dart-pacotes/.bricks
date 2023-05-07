@@ -58,3 +58,8 @@ vars:
     description: Support for cors
     prompt: Is cors needed?
     default: false
+  openSource:
+    type: boolean
+    description: Whether the package is open-source or not
+    default: true
+    prompt: Is the package open-source?
