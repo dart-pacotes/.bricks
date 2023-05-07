@@ -48,3 +48,8 @@ vars:
     description: Support for dependabot
     prompt: Is dependabot needed?
     default: false
+  throttling:
+    type: boolean
+    description: Support for throttling
+    prompt: Is throttling needed?
+    default: false
