@@ -2,7 +2,7 @@ name: pacote_web
 description: A very opiniated TypeScript Node library template that fits my own taste and workflow
 repository: https://github.com/dart-pacotes/.bricks/tree/master/pacote_web
 
-version: 0.1.0+1
+version: 0.1.1
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
