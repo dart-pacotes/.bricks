@@ -11,6 +11,9 @@ require (
 {{#isCli}}
 	github.com/urfave/cli/v2 v2.25.3
 {{/isCli}}
+{{#withThrottling}}
+	golang.org/x/time v0.3.0
+{{/withThrottling}}
 )
 
 {{#isWebService}}
