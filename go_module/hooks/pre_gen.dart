@@ -7,6 +7,7 @@ void run(HookContext context) {
   _setWithDependabotCheck(context);
   _setWithThrottlingCheck(context);
   _setWithCorsCheck(context);
+  _setIsOpenSourceCheck(context);
   _setTypeDetails(context);
   _setName(context);
   _setAuthor(context);
@@ -69,6 +70,15 @@ void _setWithCorsCheck(HookContext context) {
   context.vars = {
     ...context.vars,
     'withCors': isWebService && withCors,
+  };
+}
+
+void _setIsOpenSourceCheck(HookContext context) {
+  final isOpenSource = context.vars['openSource'] == true;
+
+  context.vars = {
+    ...context.vars,
+    'isOpenSource': isOpenSource,
   };
 }
 
