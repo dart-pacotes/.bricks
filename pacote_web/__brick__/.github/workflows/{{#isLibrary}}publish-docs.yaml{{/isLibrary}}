@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [npm-published]
 
-  concurrency: {{{workflow_concurrency}}}
+concurrency: ${{#mustacheCase}}github.workflow{{/mustacheCase}}-${{#mustacheCase}}github.ref{{/mustacheCase}}
 
 jobs:
   publish:
@@ -20,4 +20,4 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run docs:publish -- -u "github-actions-bot <support+actions@github.com>"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{#mustacheCase}}secrets.GITHUB_TOKEN{{/mustacheCase}}

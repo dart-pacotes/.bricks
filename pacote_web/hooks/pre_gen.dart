@@ -4,7 +4,6 @@ void run(HookContext context) {
   _setLicenseDetails(context);
   _setIsLibraryCheck(context);
   _setWithHotReloadCheck(context);
-  _setWorkflowConcurrency(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -42,9 +41,4 @@ void _setWithHotReloadCheck(HookContext context) {
     ...context.vars,
     'withHotReload': withHotReload,
   };
-}
-
-void _setWorkflowConcurrency(HookContext context) {
-  context.vars['workflow_concurrency'] =
-      '\${{ github.workflow }}-\${{ github.ref }}';
 }
