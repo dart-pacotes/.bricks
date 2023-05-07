@@ -3,7 +3,7 @@
 {{description}}
 
 {{#isLibrary}}
-![npm version](https://badgen.net/npm/v/{{name.lowerCase().paramCase()}}) ![npm total downloads](https://badgen.net/npm/dt/{{name.lowerCase().paramCase()}}) ![bundlephobia bundle size](https://badgen.net/bundlephobia/min/{{name.lowerCase().paramCase()}})
+![npm version](https://badgen.net/npm/v/{{#isOrganization}}@{{author}}/{{/isOrganization}}{{name.lowerCase().paramCase()}}) ![npm total downloads](https://badgen.net/npm/dt/{{#isOrganization}}@{{author}}/{{/isOrganization}}{{name.lowerCase().paramCase()}}) ![bundlephobia bundle size](https://badgen.net/bundlephobia/min/{{#isOrganization}}@{{author}}/{{/isOrganization}}{{name.lowerCase().paramCase()}})
 
 ---
 
