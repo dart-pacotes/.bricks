@@ -1,3 +1,9 @@
+# 0.1.2
+
+- Cleanup `jest.config.ts`
+- Fix Jest running tests outside of `src` directory (e.g., `bin`)
+- Run `npm install` on example folder after package generation
+
 # 0.1.1
 
 - Fix `swc` only compiling `index.ts`
