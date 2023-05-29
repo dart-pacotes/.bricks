@@ -21,19 +21,28 @@ bool _isNPMAvailable() {
 void _installDependencies(final HookContext context) {
   final logger = context.logger;
   final directory = Directory.current;
+  final exampleDirectory = Directory('${directory.path}/example');
 
   final progress = logger.progress('Installing dependencies');
 
   logger.info('Running npm install');
 
-  final npmInstallStatus = Process.runSync(
-    'npm',
-    ['i'],
-    runInShell: true,
-    workingDirectory: directory.path,
-  );
+  void npmInstall(Directory directory) {
+    final npmInstallStatus = Process.runSync(
+      'npm',
+      ['i'],
+      runInShell: true,
+      workingDirectory: directory.path,
+    );
 
-  logger.info(npmInstallStatus.stdout);
+    logger.info(npmInstallStatus.stdout);
+  }
+
+  npmInstall(directory);
+
+  if (exampleDirectory.existsSync()) {
+    npmInstall(exampleDirectory);
+  }
 
   progress.complete('Finish formatting.');
 }
