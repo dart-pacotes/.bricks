@@ -4,6 +4,7 @@ void run(HookContext context) {
   _setLicenseDetails(context);
   _setIsLibraryCheck(context);
   _setWithHotReloadCheck(context);
+  _setKeywordsList(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -40,5 +41,18 @@ void _setWithHotReloadCheck(HookContext context) {
   context.vars = {
     ...context.vars,
     'withHotReload': withHotReload,
+  };
+}
+
+void _setKeywordsList(HookContext context) {
+  final keywordsCommaSeparated = context.vars['keywords'];
+
+  final keywords = [
+    ...keywordsCommaSeparated.split(',').map((x) => x.trim()),
+  ];
+
+  context.vars = {
+    ...context.vars,
+    'keywords': keywords,
   };
 }

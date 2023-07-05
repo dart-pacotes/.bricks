@@ -37,17 +37,10 @@
 		"url": "git+https://github.com/{{author}}/{{name.lowerCase().paramCase()}}.git"
 	},
 	"keywords": [
-		"typescript",
-		"prettier",
-		"eslint",
-		"jest",
-		"hot",
-		{{#withHotReload}}
-		"reload",
-		{{/withHotReload}}
-		"git",
-		"hooks",
-		"starter"
+		{{#keywords}}
+			"{{.}}",
+		{{/keywords}}
+		"{{name.lowerCase().paramCase()}}"
 	],
 	"author": "{{author}}",
 	"license": "{{license}}",
