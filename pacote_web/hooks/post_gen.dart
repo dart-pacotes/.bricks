@@ -33,7 +33,7 @@ void _installDependencies(final HookContext context) {
     Directory directory, {
     bool exampleDir = false,
   }) {
-    if (runningOnWindows) {
+    if (runningOnWindows && exampleDir) {
       logger.warn(
         '''
 WARNING: Looks like you\'re developing under a Windows environment. If you ever need to install 
