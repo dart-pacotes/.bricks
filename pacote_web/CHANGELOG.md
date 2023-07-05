@@ -1,3 +1,7 @@
+# 0.1.3
+
+- Add support for keywords definition
+
 # 0.1.2
 
 - Cleanup `jest.config.ts`
