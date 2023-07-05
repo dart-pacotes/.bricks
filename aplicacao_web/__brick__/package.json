@@ -45,5 +45,11 @@
 	"dependencies": {
 		"rippleui": "^1.9.2",
 		"typesafe-i18n": "^5.24.2"
-	}
+	},
+	"keywords": [
+		{{#keywords}}
+			"{{.}}",
+		{{/keywords}}
+		"{{name.lowerCase().paramCase()}}"
+	]
 }

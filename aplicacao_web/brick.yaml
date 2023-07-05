@@ -30,6 +30,11 @@ vars:
     description: Author of the application
     prompt: Who is creating this application?
     default: freitzzz
+  keywords:
+    type: string
+    description: Keywords that identify the application
+    prompt: What keywords can identify this application? (comma separated)
+    default: typescript, prettier, eslint, jest, git, starter
   adapter:
     type: enum
     description: Svelte-kit adapter for deployment
