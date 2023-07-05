@@ -33,7 +33,9 @@ void _installDependencies(final HookContext context) {
     Directory directory, {
     bool exampleDir = false,
   }) {
-    if (runningOnWindows && exampleDir) {
+    final setNoDeleteSymlinksFlag = runningOnWindows && exampleDir;
+
+    if (setNoDeleteSymlinksFlag) {
       logger.warn(
         '''
 WARNING: Looks like you\'re developing under a Windows environment. If you ever need to install 
@@ -43,7 +45,7 @@ dependencies on the example project, make sure you pass the "--no-delete-symlink
 
     final npmInstallStatus = Process.runSync(
       'npm',
-      ['i', if (runningOnWindows && exampleDir) '--no-delete-symlinks'],
+      ['i', if (setNoDeleteSymlinksFlag) '--no-delete-symlinks'],
       runInShell: true,
       workingDirectory: directory.path,
     );
