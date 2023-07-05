@@ -1,6 +1,7 @@
 # 0.1.3
 
 - Add support for keywords definition
+- Fix example project not resolving dependencies for libraries on Windows
 
 # 0.1.2
 

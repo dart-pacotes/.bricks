@@ -25,12 +25,27 @@ void _installDependencies(final HookContext context) {
 
   final progress = logger.progress('Installing dependencies');
 
+  final runningOnWindows = Platform.isWindows;
+
   logger.info('Running npm install');
 
-  void npmInstall(Directory directory) {
+  void npmInstall(
+    Directory directory, {
+    bool exampleDir = false,
+  }) {
+    final setNoDeleteSymlinksFlag = runningOnWindows && exampleDir;
+
+    if (setNoDeleteSymlinksFlag) {
+      logger.warn(
+        '''
+WARNING: Looks like you\'re developing under a Windows environment. If you ever need to install 
+dependencies on the example project, make sure you pass the "--no-delete-symlinks" flag! ''',
+      );
+    }
+
     final npmInstallStatus = Process.runSync(
       'npm',
-      ['i'],
+      ['i', if (setNoDeleteSymlinksFlag) '--no-delete-symlinks'],
       runInShell: true,
       workingDirectory: directory.path,
     );
@@ -41,7 +56,7 @@ void _installDependencies(final HookContext context) {
   npmInstall(directory);
 
   if (exampleDirectory.existsSync()) {
-    npmInstall(exampleDirectory);
+    npmInstall(exampleDirectory, exampleDir: true);
   }
 
   progress.complete('Finish formatting.');
