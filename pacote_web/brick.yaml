@@ -34,6 +34,11 @@ vars:
     description: Support for hotreload
     default: false
     prompt: Is hotreload needed?
+  keywords:
+    type: string
+    description: Keywords that identify the package
+    prompt: What keywords identify this package? (comma separated)
+    default: typescript, prettier, eslint, jest, git, starter
   license:
     type: enum
     description: Software source-code license of the package

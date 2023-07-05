@@ -33,7 +33,7 @@ vars:
   keywords:
     type: string
     description: Keywords that identify the application
-    prompt: What keywords can identify this application? (comma separated)
+    prompt: What keywords identify this application? (comma separated)
     default: typescript, prettier, eslint, jest, git, starter
   adapter:
     type: enum
