@@ -1,6 +1,7 @@
-# 0.1.2
+# 0.2.0
 
 - add support for keywords definition
+- migrate to svelte 4
 
 # 0.1.1
 
