@@ -25,3 +25,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{#mustacheCase}}secrets.GITHUB_TOKEN{{/mustacheCase}}
           NPM_TOKEN: ${{#mustacheCase}}secrets.NPM_TOKEN{{/mustacheCase}}
+
+      - name: Notify if published
+        if: steps.changesets.outputs.published == 'true'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: npm-published
