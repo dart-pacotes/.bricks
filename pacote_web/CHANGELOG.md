@@ -3,6 +3,7 @@
 - Add support for keywords definition
 - Fix example project not resolving dependencies for libraries on Windows
 - Remove `.changeset` folder from standalone program bundle
+- Fix `publish-docs` workflow not being triggered after package publish
 
 # 0.1.2
 
