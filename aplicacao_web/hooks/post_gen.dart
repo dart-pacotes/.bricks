@@ -4,6 +4,7 @@ import 'package:mason/mason.dart';
 void run(HookContext context) {
   if (_isNPMAvailable()) {
     _installDependencies(context);
+    _installHooks(context);
     _formatFiles(context);
   }
 }
@@ -44,7 +45,65 @@ void _installDependencies(final HookContext context) {
     npmInstall(exampleDirectory);
   }
 
-  progress.complete('Finish formatting.');
+  progress.complete('Finish npm install.');
+}
+
+void _installHooks(final HookContext context) {
+  final logger = context.logger;
+  final directory = Directory.current;
+  final gitDirectory = Directory('${directory.path}/.git');
+  final hooksDirectory = Directory('${directory.path}/hooks');
+
+  if (!gitDirectory.existsSync()) {
+    logger.info(
+        'Current directory is not a git repository, skipping hooks install...');
+
+    return;
+  }
+
+  final hooksFiles = hooksDirectory.listSync().whereType<File>();
+
+  final progress = logger.progress('Installing hooks');
+
+  final runningOnWindows = Platform.isWindows;
+
+  if (runningOnWindows) {
+    logger.warn(
+      'Windows environment detected. Hooks will only be installed if mason was invoked in git-bash.',
+    );
+  }
+
+  logger.info('Setting executable permissions...');
+
+  hooksFiles.forEach(
+    (file) {
+      progress.update('chmod +x ${file.path}');
+
+      final chmodStatus = Process.runSync(
+        'chmod',
+        ['+x', file.path],
+        runInShell: true,
+        workingDirectory: hooksDirectory.path,
+      );
+
+      logger.info(chmodStatus.stdout);
+    },
+  );
+
+  logger.info('Installing hooks...');
+
+  progress.update('./INSTALL');
+
+  final installStatus = Process.runSync(
+    './INSTALL',
+    [],
+    runInShell: true,
+    workingDirectory: hooksDirectory.path,
+  );
+
+  logger.info(installStatus.stdout);
+
+  progress.complete('Finish hooks install.');
 }
 
 void _formatFiles(final HookContext context) {
