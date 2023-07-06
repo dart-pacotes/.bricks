@@ -2,6 +2,7 @@
 
 - Add support for keywords definition
 - Fix example project not resolving dependencies for libraries on Windows
+- Remove `.changeset` folder from standalone program bundle
 
 # 0.1.2
 
