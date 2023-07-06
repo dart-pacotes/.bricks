@@ -2,6 +2,7 @@
 
 - add support for keywords definition
 - migrate to svelte 4
+- git client hooks are now installed after brick generation
 
 # 0.1.1
 
