@@ -33,7 +33,7 @@ todo: enumerate features package does not provide
 {{/isLibrary}}
 
 {{#isLibrary}}
-### Bugs and Contributions
+## Bugs and Contributions
 
 Found any bug (including typos) in the package? Do you have any suggestion 
 or feature to include for future releases? Please create an issue via 
@@ -43,7 +43,7 @@ welcome!
 
 To contribute, start by setting up your local development environment. The [setup.md](setup.md) document will onboard you on how to do so!
 
-### Contact
+## Contact
 
 This template was prepared by:
 
