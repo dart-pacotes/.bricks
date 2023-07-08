@@ -2,65 +2,32 @@
 
 {{description}}
 
-## Hooks
+## Features
 
-This repository is configured with client-side Git hooks that automatically format + lint the codebase before each push. You can install it by running the following command:
+todo: enumerate features app currently provides
 
-```bash
-./hooks/INSTALL
-```
+### Upcoming features
 
-## Development
+todo: enumerate features app does not provide
 
-Once you've created a project and installed dependencies with `npm install`, start a development server:
+## Demo
 
-```bash
-npm run dev
-```
+todo: embed video that quickly previews app
 
-Also, to update the localization files, you will need to run the following command before editing each locale files:
+The app is also live at: https://...
 
-```bash
-npm run typesafe-i18n
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-## Deploy
-
-To deploy your app:
-
-```bash
-npm run deploy
-```
-
-{{#useNodeAdapter}}
 ---
 
-Alternatively, you can deploy your app within a Docker container. First, build the image:
+## Bugs and Contributions
 
-```bash
-docker_tag={{name.lowerCase().paramCase()}}:latest
-docker build -f ./Dockerfile . -t $docker_tag
-```
+Found any bug (including typos) in the app? Do you have any suggestion 
+or feature to include for future releases? Please create an issue via 
+GitHub in order to track each contribution. Also, pull requests are very 
+welcome!
 
-Then, spawn a container:
+To contribute, start by setting up your local development environment. The [setup.md](setup.md) document will onboard you on how to do so!
 
-```bash
-docker run -p 3000:3000 -t $docker_tag
-```
-
-{{/useNodeAdapter}}
-
-### Contact
+## Contact
 
 This template was prepared by:
 
