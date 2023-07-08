@@ -6,11 +6,14 @@
 		"plugin:@typescript-eslint/recommended",
 		"prettier"
 	],
-	"plugins": ["@typescript-eslint", "prettier"],
+	"plugins": ["@typescript-eslint", "prettier", "unused-imports"],
 	"ignorePatterns": ["*.cjs"],
 	"parserOptions": {
 		"sourceType": "module",
 		"ecmaVersion": 2016
+	},
+	"rules": {
+		"unused-imports/no-unused-imports": "error"
 	},
 	"env": {
 		"browser": true,
