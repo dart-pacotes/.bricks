@@ -13,7 +13,7 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint . --fix",
 		"format": "prettier --plugin-search-dir . --write .",
 		{{#useGitHubPagesAdapter}}
-		"deploy": "npx gh-pages -d build -b master -r https://github.com/<github_username>/<repo_hosting_static_pages> -t true --no-jekyll",
+		"deploy": "npx gh-pages -d build -b gh-pages -r https://github.com/{{author}}/{{name.lowerCase().paramCase()}} -t true --no-jekyll",
 		{{/useGitHubPagesAdapter}}
 		"typesafe-i18n": "typesafe-i18n"
 	},
