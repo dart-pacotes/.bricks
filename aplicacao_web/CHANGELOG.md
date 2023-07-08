@@ -4,6 +4,7 @@
 - migrate to svelte 4
 - git client hooks are now installed after brick generation
 - automatically remove unused imports on lint
+- improve developers onboarding experience
 
 # 0.1.1
 
