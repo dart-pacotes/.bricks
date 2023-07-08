@@ -5,6 +5,7 @@ void run(HookContext context) {
   _setIsLibraryCheck(context);
   _setWithHotReloadCheck(context);
   _setKeywordsList(context);
+  _promptBinUsage(context);
 }
 
 void _setLicenseDetails(HookContext context) {
@@ -54,5 +55,23 @@ void _setKeywordsList(HookContext context) {
   context.vars = {
     ...context.vars,
     'keywords': keywords,
+  };
+}
+
+void _promptBinUsage(HookContext context) {
+  final isLibrary = context.vars['isLibrary'] as bool;
+
+  bool generateBin = false;
+
+  if (isLibrary) {
+    generateBin = context.logger.confirm(
+      'Would like to generate a bin program (e.g., usage with npx) for this package?',
+      defaultValue: true,
+    );
+  }
+
+  context.vars = {
+    ...context.vars,
+    'generateBin': generateBin,
   };
 }

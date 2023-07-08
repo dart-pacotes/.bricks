@@ -5,6 +5,9 @@
 	"main": "dist/index.js",
 	"module": "dist/index.cjs",
 	"types": "dist/index.d.ts",
+	{{#generateBin}}
+	"bin": "bin/index.mjs",
+	{{/generateBin}}
 	{{#isLibrary}}
 	"sideEffects": false,
 	{{/isLibrary}}
