@@ -29,6 +29,9 @@ todo: enumerate features package currently provides
 
 todo: enumerate features package does not provide
 
+---
+{{/isLibrary}}
+
 {{#isLibrary}}
 ### Bugs and Contributions
 
