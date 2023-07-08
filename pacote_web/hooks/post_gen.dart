@@ -6,6 +6,7 @@ void run(HookContext context) {
     _installDependencies(context);
     _installHooks(context);
     _formatFiles(context);
+    _linkBin(context);
   }
 }
 
@@ -139,4 +140,28 @@ void _formatFiles(final HookContext context) {
   logger.info(npmRunFormatStatus.stdout);
 
   progress.complete('Finish formatting.');
+}
+
+void _linkBin(final HookContext context) {
+  final logger = context.logger;
+  final directory = Directory.current;
+
+  final generateBin = context.vars['generateBin'] == true;
+
+  if (generateBin) {
+    final progress = logger.progress('Linking bin program');
+
+    logger.info('Running npm link');
+
+    final npmLinkStatus = Process.runSync(
+      'sudo',
+      ['npm', 'link'],
+      runInShell: true,
+      workingDirectory: directory.path,
+    );
+
+    logger.info(npmLinkStatus.stdout);
+
+    progress.complete('Finish linking.');
+  }
 }

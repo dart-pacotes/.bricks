@@ -15,6 +15,12 @@ todo: describe usage
 todo: include usage code here
 ```
 
+Additionally, you can {{description.lowerCase()}}. Execute the following command for more info:
+
+```bash
+{{name.lowerCase().paramCase()}} --help
+```
+
 ## Features
 
 todo: enumerate features package currently provides
