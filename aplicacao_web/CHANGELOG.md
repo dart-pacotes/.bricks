@@ -3,6 +3,7 @@
 - add support for keywords definition
 - migrate to svelte 4
 - git client hooks are now installed after brick generation
+- automatically remove unused imports on lint
 
 # 0.1.1
 

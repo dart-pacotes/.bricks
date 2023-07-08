@@ -5,6 +5,8 @@
 - Remove `.changeset` folder from standalone program bundle
 - Fix `publish-docs` workflow not being triggered after package publish
 - Git Client Hooks are now installed after brick generation
+- Add bin program support for packages
+- Automatically remove unused imports on lint
 
 # 0.1.2
 
