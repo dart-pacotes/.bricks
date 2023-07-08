@@ -25,45 +25,9 @@ Additionally, you can {{description.lowerCase()}}. Execute the following command
 
 todo: enumerate features package currently provides
 
-## Missing features
+### Upcoming features
 
 todo: enumerate features package does not provide
-
----
-{{/isLibrary}}
-
-## Scripts
-
-- `npm run build` to transpile and bundle files in `.cjs`, `.js`, `.d.ts` and respective source-maps
-- `npm run start` to run the project with `swc` compilation
-{{#withHotReload}}
-- `npm run start:hot` to run the project with hot-reload enabled
-{{/withHotReload}}
-- `npm run test` to run the unit tests
-- `npm run lint` to analyze and lint the project
-- `npm run format` to format the project based on lint feedback
-- `npm run docs` to generate docs site
-- `npm run docs:publish` to generate docs site and publish it to GitHub Pages
-{{#isLibrary}}
-- `npm run release` to create the temporary changesets file
-- `npm run publish` to publish the package to NPM
-{{/isLibrary}}
-
-## Hooks
-
-This repository is configured with client-side Git hooks that automatically format + lint the codebase before each push. You can install it by running the following command:
-
-```bash
-./hooks/INSTALL
-```
-
-{{#isLibrary}}
-## Automatically Publishing to NPM
-
-To automatically publish the package to NPM, you will need to grab a token of the publisher account for CI usage, and set it as a repository secret in GitHub under the `NPM_TOKEN` identifier.
-{{/isLibrary}}
-
----
 
 {{#isLibrary}}
 ### Bugs and Contributions
@@ -73,6 +37,8 @@ or feature to include for future releases? Please create an issue via
 GitHub in order to track each contribution. Also, pull requests are very 
 welcome!
 {{/isLibrary}}
+
+To contribute, start by setting up your local development environment. The [setup.md](setup.md) document will onboard you on how to do so!
 
 ### Contact
 
