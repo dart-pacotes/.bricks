@@ -15,11 +15,13 @@ todo: describe usage
 todo: include usage code here
 ```
 
+{{#generateBin}}
 Additionally, you can {{description.lowerCase()}}. Execute the following command for more info:
 
 ```bash
 {{name.lowerCase().paramCase()}} --help
 ```
+{{/generateBin}}
 
 ## Features
 
