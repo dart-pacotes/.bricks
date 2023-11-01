@@ -24,8 +24,8 @@ If everything finished successfully, you're ready to start hacking around! The t
 |Script|Description|
 |------|-----------|
 |`npm run build`|transpile and bundle files in `.cjs`, `.js`, `.d.ts` and respective source-maps|
-|`npm run start`|run the project with `swc` compilation|
-{{#withHotReload}}|`npm run start:hot`|run the project with hot-reload enabled|{{/withHotReload}}
+{{#withHotReload}}|`npm run start`|run the project with `swc` compilation|
+|`npm run start:hot`|run the project with hot-reload enabled|{{/withHotReload}}{{^withHotReload}}|`npm run start`|run the project with `swc` compilation|{{/withHotReload}}
 |`npm run test`|run the unit tests|
 |`npm run lint`|analyze and lint the project|
 |`npm run format`|format the project based on lint feedback|
