@@ -6,6 +6,14 @@
 
 This worker was bootstrapped using [worker brick](https://github.com/dart-pacotes/.brick) and configured with [wrangler](https://github.com/cloudflare/wrangler) CLI. You can install it via NPM: `npm install -g wrangler`
 
+## Hooks
+
+This repository is configured with client-side Git hooks that automatically format + lint the codebase before each push. You can install it by running the following command:
+
+```bash
+./hooks/INSTALL
+```
+
 ## Development
 
 Run the local server via `npm run start`
