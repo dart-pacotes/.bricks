@@ -8,6 +8,12 @@ This worker was bootstrapped using [worker brick](https://github.com/dart-pacote
 
 ## Development
 
+To properly run this service, you will need to a set up a `.dev.vars` file. Start by creating a copy of the `.dev.vars.tpl` file and fill the variables with values appropriate for the execution context.
+
+|    Variable Name    | Variable Description |
+| :-----------------: | :------------------- |
+|   `AWESOME_SECRET`  |    Awesome Secret.   |
+
 Run the local server via `npm run start`
 
 {{^isFetchWorker}}
