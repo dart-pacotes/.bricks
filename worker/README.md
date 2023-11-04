@@ -6,6 +6,6 @@ A very opiniated Cloudflare Worker template that fits my own taste and workflow
 
 ## Usage
 
-```
-mason make worker --name <brick_name> --description <brick_description> --author <brick_author> --license <brick_license>
+```bash
+mason make worker --name <brick_name> --description <brick_description> --author <brick_author> --type <fetch|scheduled> --license <MIT|GNUGPLV3|none>
 ```
