@@ -30,6 +30,15 @@ vars:
     description: Author of the worker
     prompt: Who is creating this worker?
     default: freitzzz
+  license:
+    type: enum
+    description: Software source-code license of the brick
+    prompt: Under which license is the worker available?
+    default: MIT
+    values:
+      - MIT
+      - GNUGPLV3
+      - none
   type:
     type: enum
     description: Type of worker in use
