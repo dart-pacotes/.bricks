@@ -1,3 +1,11 @@
+# 0.1.5
+
+- chore: manual bump
+
+# 0.1.4
+
+- fix: module entrypoint not pointing to ecmascript module
+
 # 0.1.3
 
 - Add support for keywords definition
