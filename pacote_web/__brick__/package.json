@@ -35,6 +35,12 @@
 		"format": "prettier --plugin-search-dir . --write ."
 		{{/isLibrary}}
 	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*",
+		"!dist/**/spec/**"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/{{author}}/{{name.lowerCase().paramCase()}}.git"
