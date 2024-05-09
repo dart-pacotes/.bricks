@@ -1,3 +1,8 @@
+# 0.1.6
+
+- fix: set package type as module
+- chore: replace swc with esbuild
+
 # 0.1.5
 
 - chore: manual bump
