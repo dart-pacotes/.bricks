@@ -14,13 +14,16 @@
 	{{#isLibrary}}
 	"sideEffects": false,
 	{{/isLibrary}}
+	{{^isLibrary}}
+	"private": true,
+	{{/isLibrary}}
 	"scripts": {
 		"build": "tsup src/index.ts --format esm,cjs --dts --sourcemap",
 		{{#isLibrary}}
 		"start": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.cjs && esbuild example/index.ts --bundle --outdir=example/dist --platform=node && node example/dist/index.js",
 		{{/isLibrary}}
 		{{^isLibrary}}
-		"start": "esbuild src/index.ts --outdir=dist --platform=node && node dist/index.js",
+		"start": "esbuild src/index.ts --bundle --outdir=dist --platform=node && node dist/index.js",
 		{{/isLibrary}}
 		{{#withHotReload}}
 		"start:hot": "npx nodemon",
@@ -70,13 +73,13 @@
 		"@types/node": "^18.15.11",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
-		"eslint": "^8.38.0",
-		"eslint-plugin-unused-imports":"^2.0.0",
+		"eslint": "^8.56.0",
+		"eslint-plugin-unused-imports":"^3.2.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"jest": "^29.5.0",
 		{{#withHotReload}}
-		"nodemon": "^2.0.22",
+		"nodemon": "^3.1.0",
 		{{/withHotReload}}
 		"ts-node": "^10.9.1",
 		"typedoc": "^0.24.6",
