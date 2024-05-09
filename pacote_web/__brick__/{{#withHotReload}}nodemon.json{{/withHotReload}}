@@ -2,5 +2,5 @@
 	"watch": ["src"],
 	"ext": ".ts,.js",
 	"ignore": [],
-	"exec": "npx swc src/* -d dist && node dist/index.js"
+	"exec": "npm run start"
 }
