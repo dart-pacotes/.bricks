@@ -18,7 +18,7 @@ These are the things you get if you use this template:
 8. Light + Dark + Any other theme customization 
 9. Server-side Routing
 10. TailwindCSS + Tailwind framework ([Ripple UI](https://www.ripple-ui.com/))
-12. Out of the box localization system
+12. Out of the box localization system (uses `navigator.language` on browser and `accepts-language` header on server)
 13. Out of the box client alert components/logic
 14. Out of the box logging on client + server side
 15. Out of the box linting + formatting (with eslint)

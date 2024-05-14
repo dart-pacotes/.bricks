@@ -17,7 +17,7 @@ This project can be generated with few other options on https://github.com/dart-
 - Server-side Routing
 - TailwindCSS + Tailwind framework ([Ripple UI](https://www.ripple-ui.com/))
 - T-Shirt sized asset images system ([assets](src/lib/presentation/components/assets/))
-- Out of the box localization system ([typesafe-i18n](src/i18n/))
+- Out of the box localization system ([typesafe-i18n](src/i18n/), uses `navigator.language` on browser and `accepts-language` header on server)
 - Out of the box client alert components/logic
 - Out of the box logging on client + server side ([hooks](src))
 - Out of the box linting + formatting (with eslint)
