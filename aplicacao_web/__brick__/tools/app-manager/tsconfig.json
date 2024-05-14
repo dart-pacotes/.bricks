@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		/* Visit https://aka.ms/tsconfig to read more about this file */
+		/* Language and Environment */
+		"target": "ES6" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+		/* Modules */
+		"module": "ES6" /* Specify what module code is generated. */,
+		"rootDir": "src" /* Specify the root folder within your source files. */,
+		"resolveJsonModule": true,
+		"moduleResolution": "node",
+		/* Emit */
+		"sourceMap": true /* Create source map files for emitted JavaScript files. */,
+		"outDir": "dist" /* Specify an output folder for all emitted files. */,
+		"esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+		"forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+		/* Type Checking */
+		"strict": true /* Enable all strict type-checking options. */,
+		"noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
+		/* Completeness */
+		"skipLibCheck": true /* Skip type checking all .d.ts files. */
+	},
+	"include": ["src/**/*"],
+	"typedocOptions": {
+		"entryPoints": ["src/index.ts"],
+		"out": "docs"
+	},
+	"exclude": ["node_modules", "dist/**/*", "coverage/**/*"]
+}

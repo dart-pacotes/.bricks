@@ -2,7 +2,7 @@
 	"name": "{{name.lowerCase().paramCase()}}",
 	"description": "{{description}}",
 	"author": "{{author}}",
-	"version": "0.0.1",
+	"version": "0.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -10,14 +10,19 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check . && eslint . --fix",
-		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "prettier --check . && eslint . --fix",
+		"format": "prettier --write .",
+		"manager": "npm run start --prefix=tools/app-manager",
+		"typesafe-i18n": "typesafe-i18n",
 		{{#useGitHubPagesAdapter}}
 		"deploy": "npx gh-pages -d build -b gh-pages -r https://github.com/{{author}}/{{name.lowerCase().paramCase()}} -t true --no-jekyll",
 		{{/useGitHubPagesAdapter}}
-		"typesafe-i18n": "typesafe-i18n"
+		"test": "vitest --run",
+		"test:coverage": "vitest run --coverage",
+		"test:e2e": "playwright test --headed"
 	},
 	"devDependencies": {
+		"@playwright/test": "^1.43.1",
 		{{#useNodeAdapter}}
 		"@sveltejs/adapter-node": "^1.2.1",
 		{{/useNodeAdapter}}
@@ -25,13 +30,16 @@
 		"@sveltejs/adapter-static": "^2.0.1",
 		{{/useGitHubPagesAdapter}}
 		"@sveltejs/kit": "^1.20.4",
+		"@testing-library/svelte": "^4.1.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
+		"@vitest/coverage-v8": "^1.6.0",
 		"autoprefixer": "^10.4.13",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-svelte":"^2.32.2",
-		"eslint-plugin-unused-imports":"^2.0.0",
+		"eslint-plugin-svelte": "^2.32.2",
+		"eslint-plugin-unused-imports": "^2.0.0",
+		"jsdom": "^24.0.0",
 		"postcss": "^8.4.21",
 		"prettier": "^3.2.5",
 		"prettier-plugin-svelte": "^3.2.2",
@@ -41,10 +49,16 @@
 		"tailwindcss": "^3.2.7",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"vite": "^4.3.9"
+		"vite": "^4.3.9",
+		"vitest": "^1.6.0"
 	},
 	"type": "module",
 	"dependencies": {
+		"@web-pacotes/foundation-types": "^0.0.3",
+		"@web-pacotes/lumberdash": "^0.0.2",
+		"@web-pacotes/networking": "^0.0.7",
+		"@web-pacotes/reactor-svelte": "^0.0.5",
+		"nanoid": "^5.0.7",
 		"rippleui": "^1.9.2",
 		"typesafe-i18n": "^5.24.2"
 	},
