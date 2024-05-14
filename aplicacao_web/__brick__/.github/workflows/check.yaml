@@ -1,0 +1,23 @@
+name: Check project status (Lint + Unit Test)
+on:
+  pull_request:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.12.0
+          cache: 'npm'
+
+      - run: npm install --frozen-lockfile
+      - name: Run lint task
+        id: lint
+        run: npm run lint
+      - name: Run unit tests task
+        id: unit-tests
+        run: 'npm run test:coverage'

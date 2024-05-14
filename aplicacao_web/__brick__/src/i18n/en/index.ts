@@ -1,8 +1,26 @@
-import type { BaseTranslation } from '../i18n-types'
+import type { BaseTranslation } from '../i18n-types';
 
 const en = {
-	// TODO: your translations go here
-	greetings: 'This project was generated with dart-pacotes/.bricks: https://github.com/dart-pacotes/.bricks/tree/master/aplicacao-web',
-} satisfies BaseTranslation
+	todoList: {
+		empty: "Nothing here yet! What's on your mind?",
+		new: 'New todo...',
+		delete: 'Delete completed',
+		updated: 'Updated',
+		alerts: {
+			updateFailure: {
+				title: 'Update failure',
+				message: "Couldn't update the last todo"
+			}
+		}
+	},
+	asdf: {
+		title: 'You have found out a secret page...',
+		description:
+			"There isn't any cool here, but you can star this project on GitHub... It helps a ton!",
+		actions: {
+			visit: 'Absolutely! :)'
+		}
+	}
+} satisfies BaseTranslation;
 
-export default en
+export default en;

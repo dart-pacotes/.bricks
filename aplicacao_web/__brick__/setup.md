@@ -18,16 +18,22 @@ To finish, install all the dependencies the project requires to be built.
 npm i
 ```
 
-If everything finished successfully, you're ready to start hacking around! The table below will onboard you on the available commands to use.
+If everything finished successfully, you're ready to start hacking around! The table below will onboard you on the
+available commands to use.
 
-|Script|Description|
-|------|-----------|
-|`npm run dev`|start the development server|
-|`npm run preview`|start production app server|
-|`npm run typesafe-i18n`|update localization files|
-|`npm run lint`|analyze and lint the project|
-|`npm run format`|format the project based on lint feedback|
-|`npm run build`|build app in production environment|
+| Script                  | Description                                        |
+| ----------------------- | -------------------------------------------------- |
+| `npm run dev`           | start the development server                       |
+| `npm run preview`       | start production app server                        |
+| `npm run check`         | validates and syncs svelte-kit configuration files |
+| `npm run typesafe-i18n` | update localization files                          |
+| `npm run lint`          | analyze and lint the project                       |
+| `npm run format`        | format the project based on lint feedback          |
+| `npm run manager`       | runs app manager tool                              |
+| `npm run build`         | build app in production environment                |
+| `npm run test`          | runs unit + component tests                        |
+| `npm run test:coverage` | runs unit + component tests and coverage report    |
+| `npm run test:e2e`      | runs e2e tests                                     |
 {{#useGitHubPagesAdapter}}|`npm run deploy`|deploys built app to GitHub Pages|{{/useGitHubPagesAdapter}}
 
 {{#useNodeAdapter}}

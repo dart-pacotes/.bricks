@@ -34,7 +34,7 @@ vars:
     type: string
     description: Keywords that identify the application
     prompt: What keywords identify this application? (comma separated)
-    default: typescript, prettier, eslint, jest, git, starter
+    default: typescript, prettier, eslint, jest, git, starter // not working?
   adapter:
     type: enum
     description: Svelte-kit adapter for deployment

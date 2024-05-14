@@ -9,8 +9,8 @@ module.exports = {
 			files: ['*.svelte'],
 			parser: 'svelte-eslint-parser',
 			parserOptions: {
-				parser: "@typescript-eslint/parser",
-			},
+				parser: '@typescript-eslint/parser'
+			}
 		}
 	],
 	settings: {
@@ -19,10 +19,10 @@ module.exports = {
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020,
-		extraFileExtensions: [".svelte"],
+		extraFileExtensions: ['.svelte']
 	},
 	rules: {
-		'unused-imports/no-unused-imports': 'error',
+		'unused-imports/no-unused-imports': 'error'
 	},
 	env: {
 		browser: true,
