@@ -23,6 +23,7 @@ void _installDependencies(final HookContext context) {
   final logger = context.logger;
   final directory = Directory.current;
   final exampleDirectory = Directory('${directory.path}/example');
+  final managerDirectory = Directory('${directory.path}/tools/manager');
 
   final progress = logger.progress('Installing dependencies');
 
@@ -43,6 +44,10 @@ void _installDependencies(final HookContext context) {
 
   if (exampleDirectory.existsSync()) {
     npmInstall(exampleDirectory);
+  }
+
+  if (managerDirectory.existsSync()) {
+    npmInstall(managerDirectory);
   }
 
   progress.complete('Finish npm install.');
