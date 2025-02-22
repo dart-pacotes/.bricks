@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+for dir in $(ls); do
+    if [ -f "${dir}/brick.yaml" ]; then
+        (
+            cd $dir
+            yes | mason publish
+        )
+    fi
+done
