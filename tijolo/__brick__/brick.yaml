@@ -1,11 +1,11 @@
-name: {{name.lowerCase().snakeCase()}}
-description: {{description}}
-repository: {{repositoryUrl}}
+name: { { name.lowerCase().snakeCase() } }
+description: { { description } }
+repository: { { repositoryUrl } }
 
 version: 0.1.0+1
 
 environment:
-  mason: ">=0.1.0-dev.26 <0.1.0"
+  mason: ">=0.1.0-dev.26 <=0.2.0"
 
 # Variables specify dynamic values that your brick depends on.
 # Zero or more variables can be specified for a given brick.
@@ -29,12 +29,12 @@ vars:
     type: string
     description: Author of the brick
     prompt: Who is creating this brick?
-    default: {{author}}
+    default: { { author } }
   license:
     type: enum
     description: Software source-code license of the brick
     prompt: Under which license is the brick available?
-    default: {{license}}
+    default: { { license } }
     values:
       - MIT
       - GNUGPLV3
@@ -42,5 +42,5 @@ vars:
   openSource:
     type: boolean
     description: Whether the brick is open-source or not
-    default: {{openSource}}
+    default: { { openSource } }
     prompt: Is the brick open-source?
