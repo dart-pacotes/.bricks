@@ -2,7 +2,7 @@ name: worker
 description: A very opiniated Cloudflare Worker template that fits my own taste and workflow
 repository: https://github.com/dart-pacotes/.bricks/tree/master/worker
 
-version: 0.0.2
+version: 0.0.2+1
 
 environment:
   mason: ">=0.1.0-dev.26 <=0.2.0"
